@@ -63,68 +63,45 @@
             font-size: 1.15rem; line-height: 1.8; margin-bottom: 30px; max-width: 850px;
         }
 
-        /* Portada del Libro (Clickable) */
-        .book-cover-link {
-            display: block;
-            position: relative;
+        /* Contenedor de la Portada */
+        .book-preview {
             width: 100%;
-            max-width: 800px;
+            max-width: 600px;
             margin: 40px auto;
             border: 4px solid var(--black);
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            text-decoration: none;
+            box-shadow: 10px 10px 0px var(--black);
         }
 
-        .book-cover-link:hover {
-            transform: scale(1.02) rotate(1deg);
-            box-shadow: 15px 15px 0px var(--black);
-        }
-
-        .book-cover-link img {
+        .book-preview img {
             width: 100%;
             display: block;
         }
 
-        .overlay-text {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: var(--red);
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-weight: 700;
-            text-transform: uppercase;
-            transform: translateY(100%);
-            transition: 0.3s;
-        }
-
-        .book-cover-link:hover .overlay-text {
-            transform: translateY(0);
-        }
-
-        /* Botón Behance */
-        .behance-btn {
+        /* BOTÓN ESTILO BEHANCE */
+        .btn-heyzine {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #0057ff;
+            gap: 12px;
+            background: #0057ff; /* Color característico de Behance */
             color: white;
             text-decoration: none;
-            padding: 15px 30px;
+            padding: 18px 35px;
             font-weight: 700;
             text-transform: uppercase;
+            font-size: 1rem;
             border: 3px solid var(--black);
             box-shadow: 6px 6px 0px var(--black);
             transition: 0.3s;
             margin-top: 20px;
         }
-        .behance-btn:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 10px 10px 0px var(--red);
+
+        .btn-heyzine:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--red);
+            background: #0046cc;
         }
 
-        .tag-container { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag-container { margin-top: 50px; display: flex; flex-wrap: wrap; gap: 10px; }
         .tag {
             background: var(--black); color: white;
             padding: 6px 12px; font-size: 0.8rem; text-transform: uppercase; font-weight: 700;
@@ -148,24 +125,23 @@
     <div class="section-box">
         <p class="project-description">
             Este proyecto surge de una exploración personal sobre la ciudad de Buenos Aires y sus momentos de vacío. Me interesó retratar lugares que forman parte de la rutina y que normalmente están llenos de movimiento, pero capturados en horarios donde la presencia humana desaparece casi por completo.
-            <br><br>
-            A través de esta serie busqué transmitir una sensación de soledad, melancolía e introspección, transformando espacios cotidianos en escenarios más silenciosos y contemplativos.
         </p>
     </div>
 
-    <a href="https://heyzine.com/flip-book/6e8bbc7a6d.html" target="_blank" class="book-cover-link">
-        <img src="image_909d55.png" alt="Portada del Libro Buenos Aires">
-        <div class="overlay-text">Haz clic para abrir el libro interactivo ↗</div>
-    </a>
-
-    <div style="text-align: center; margin-top: 40px;">
-        <p style="font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">¿Quieres ver más de mi trabajo fotográfico?</p>
-        <a href="https://www.behance.net/agustinaterrabusi15" target="_blank" class="behance-btn">
-            Ver en Behance
-        </a>
+    <div class="book-preview">
+        <img src="image_909d55.png" alt="Portada Libro Buenos Aires">
     </div>
 
-    <div class="tag-container" style="margin-top: 50px;">
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="https://heyzine.com/flip-book/6e8bbc7a6d.html" target="_blank" class="btn-heyzine">
+            📖 Ver libro digital
+        </a>
+        <p style="margin-top: 15px; font-size: 0.9rem; font-weight: 500; opacity: 0.7;">
+            (Se abre en una pestaña interactiva de Heyzine)
+        </p>
+    </div>
+
+    <div class="tag-container">
         <div class="tag">Fotografía Digital</div>
         <div class="tag">Adobe Photoshop</div>
         <div class="tag">Diseño Editorial</div>
