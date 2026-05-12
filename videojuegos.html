@@ -57,7 +57,7 @@
         .section-box {
             border-left: 5px solid var(--black);
             padding-left: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .section-box h3 {
@@ -71,7 +71,14 @@
             font-size: 1.15rem; line-height: 1.8; margin-bottom: 20px; max-width: 900px;
         }
 
-        /* Galería Artística */
+        /* Estilo para destacar conceptos */
+        .highlight-card {
+            background: #f9f9f9;
+            border: 2px dashed var(--black);
+            padding: 25px;
+            margin: 20px 0;
+        }
+
         .art-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -82,17 +89,9 @@
         .art-item {
             border: 3px solid var(--black);
             width: 100%;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: #fff;
+            transition: 0.3s;
         }
-        .art-item:hover { transform: scale(1.03) rotate(1deg); box-shadow: 10px 10px 0px var(--yellow); }
-
-        .concept-card {
-            background: var(--bg-canvas);
-            padding: 30px;
-            border: 2px solid var(--black);
-            margin-bottom: 30px;
-        }
+        .art-item:hover { transform: translateY(-5px); box-shadow: 8px 8px 0px var(--blue); }
 
         .tag-container { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
         .tag {
@@ -108,47 +107,54 @@
 <a href="index.html" class="back-link">← Volver al inicio</a>
 
 <header>
-    <h1>Videojuegos</h1>
-    <p style="margin-bottom: 40px; font-weight: 500; color: var(--red);">Narrativas interactivas y mundos visuales.</p>
+    <h1>Desarrollo de Videojuegos</h1>
+    <p style="margin-bottom: 40px; font-weight: 500; color: var(--blue);">Creación de mundos e interacciones digitales.</p>
 </header>
 
 <article class="project-detail">
-    <h2>SOUL: El Viaje de Umbra</h2>
+    <h2>SOUL: Un viaje de autoconocimiento</h2>
     
     <div class="section-box">
         <h3>Concepto y Narrativa</h3>
         <p class="project-description">
-            <b>"Soul"</b> nace como una exploración visual sobre el autoconocimiento y la superación. Acompañamos a <i>Umbra</i>, un pequeño ser de luz, a través de escenarios que representan desafíos internos, donde cada entorno refleja un estado emocional distinto.
+            <b>"Soul"</b> es un videojuego de plataformas 2D que sigue la historia de un pequeño ser luminoso llamado <b>Umbra</b>. La propuesta no es solo mecánica, sino emocional: es una metáfora sobre el autoconocimiento y la superación de obstáculos internos. A lo largo de 10 niveles, el jugador descubre los misterios de su propio viaje mientras esquiva trampas y enfrenta enemigos que intentan apagar su luz.
         </p>
     </div>
 
-    <div class="concept-card">
-        <h3>Proceso Creativo</h3>
+    <div class="section-box" style="border-color: var(--red);">
+        <h3>Proceso Creativo & Diseño</h3>
         <p class="project-description">
-            El diseño artístico se centró en crear un contraste fuerte entre la fragilidad del protagonista y la hostilidad del entorno (pinchos, sombras y plataformas colapsables). Busqué una estética 2D limpia pero expresiva, donde el movimiento del personaje transmitiera esa sensación de fluidez y vulnerabilidad.
+            Mi enfoque principal fue lograr una <b>cohesión audiovisual</b>. Diseñé una curva de aprendizaje donde el crecimiento de Umbra se refleja en sus habilidades: desde lo más básico como saltar, hasta dominar dashes verticales y rebotes en paredes.
+            <br><br>
+            Cada dos niveles, el entorno cambia no solo en dificultad, sino en atmósfera sonora, incorporando pistas musicales únicas que acompañan el tono emocional del personaje en ese punto de su evolución.
+        </p>
+    </div>
+
+    <div class="highlight-card">
+        <h3>Atmósfera Inmersiva</h3>
+        <p class="project-description" style="font-size: 1rem;">
+            El diseño sonoro fue clave: desarrollé efectos específicos para cada interacción (el colapso de plataformas temporales, el sonido del dash, el impacto al ser herido). La interfaz fue pensada para ser minimalista y funcional, permitiendo que el foco siempre sea la experiencia visual del <i>Tilemap</i> y los sprites.
         </p>
     </div>
 
     <div class="section-box" style="border-color: var(--yellow);">
-        <h3>Arte y Atmósfera</h3>
-        <p class="project-description">
-            Desde los <b>Tilemaps</b> hasta el diseño de la interfaz (UI), cada elemento fue pensado para no romper la inmersión. Trabajé en una paleta de colores que evoluciona junto con la dificultad, integrando sonidos ambientales y efectos (salto, dash, muerte) que refuerzan la identidad táctil del juego.
-        </p>
-    </div>
-
-    <div class="art-grid">
-        <img src="concept-umbra.jpg" alt="Diseño de Personaje Umbra" class="art-item">
-        <img src="nivel-bosque.jpg" alt="Arte de Nivel" class="art-item">
-        <img src="ui-design.jpg" alt="Diseño de Interfaz" class="art-item">
+        <h3>Galería de Assets & Gameplay</h3>
+        <div class="art-grid">
+            <img src="umbra-sprites.jpg" alt="Sprites de Umbra" class="art-item">
+            <img src="enemigos-design.jpg" alt="Diseño de Enemigos" class="art-item">
+            <img src="level-design-soul.jpg" alt="Diseño de Niveles" class="art-item">
+        </div>
     </div>
 
     <div class="section-box" style="border-color: var(--blue);">
-        <h3>Herramientas Utilizadas</h3>
+        <h3>Tecnologías y Herramientas</h3>
+        <p class="project-description">
+            Para la creación de este universo técnico y artístico utilicé:
+        </p>
         <div class="tag-container">
-            <div class="tag">Unity</div>
-            <div class="tag">C# (Scripting)</div>
-            <div class="tag">Photoshop (Asset Design)</div>
-            <div class="tag">Aseprite</div>
+            <div class="tag">Unity (Motor Principal)</div>
+            <div class="tag">Visual Studio (C# Scripting)</div>
+            <div class="tag">Photoshop / Aseprite (Asset Design)</div>
             <div class="tag">Audacity (Sound Design)</div>
         </div>
     </div>
