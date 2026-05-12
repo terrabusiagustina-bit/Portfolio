@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agustina — Portfolio</title> 
+  <title>Agustina — Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +17,14 @@
     }
 
     :root {
-      --bg: #050505;
-      --text: #f5f5f5;
-      --gray: #8f8f8f;
-      --line: #1f1f1f;
-      --accent: #c4ff00;
+      --bg: #f6f2ea;
+      --text: #111111;
+      --orange: #ff6b35;
+      --green: #9ef01a;
+      --blue: #3a86ff;
+      --yellow: #ffd60a;
+      --line: rgba(0,0,0,0.1);
+      --soft: #7a7a7a;
     }
 
     body {
@@ -32,8 +35,8 @@
     }
 
     ::selection {
-      background: var(--accent);
-      color: black;
+      background: var(--blue);
+      color: white;
     }
 
     nav {
@@ -41,13 +44,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 30px 50px;
+      padding: 28px 50px;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 999;
       backdrop-filter: blur(10px);
-      background: rgba(0,0,0,0.3);
+      background: rgba(246,242,234,0.7);
       border-bottom: 1px solid var(--line);
     }
 
@@ -55,110 +58,142 @@
       font-size: 1rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      font-weight: 700;
     }
 
     nav ul {
       display: flex;
-      gap: 30px;
       list-style: none;
+      gap: 30px;
     }
 
     nav a {
-      color: var(--text);
       text-decoration: none;
-      font-size: 0.9rem;
+      color: var(--text);
+      font-size: 0.95rem;
       transition: 0.3s;
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: var(--orange);
     }
 
     .hero {
       min-height: 100vh;
+      padding: 150px 60px 60px;
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 60px 60px;
-      position: relative;
     }
 
     .hero small {
-      color: var(--gray);
-      font-size: 1rem;
-      margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 3px;
+      color: var(--orange);
+      margin-bottom: 25px;
+      font-weight: 700;
     }
 
     .hero h2 {
-      font-size: clamp(4rem, 11vw, 12rem);
+      font-size: clamp(4rem, 11vw, 10rem);
       line-height: 0.9;
-      font-weight: 700;
       text-transform: uppercase;
       max-width: 1200px;
+      position: relative;
+      z-index: 2;
     }
 
     .hero p {
-      max-width: 500px;
       margin-top: 40px;
-      color: var(--gray);
-      line-height: 1.7;
+      max-width: 550px;
+      line-height: 1.8;
+      color: var(--soft);
       font-size: 1rem;
+      position: relative;
+      z-index: 2;
     }
 
-    .circle {
+    .blob {
       position: absolute;
-      width: 500px;
-      height: 500px;
       border-radius: 50%;
-      background: var(--accent);
-      filter: blur(150px);
-      opacity: 0.12;
-      right: -100px;
-      top: 100px;
-      animation: pulse 5s infinite alternate;
+      filter: blur(70px);
+      opacity: 0.6;
+      animation: float 7s infinite alternate ease-in-out;
     }
 
-    @keyframes pulse {
+    .blob1 {
+      width: 300px;
+      height: 300px;
+      background: var(--green);
+      top: 120px;
+      right: 80px;
+    }
+
+    .blob2 {
+      width: 220px;
+      height: 220px;
+      background: var(--orange);
+      bottom: 100px;
+      left: 10%;
+      animation-delay: 1s;
+    }
+
+    .blob3 {
+      width: 250px;
+      height: 250px;
+      background: var(--blue);
+      top: 40%;
+      right: 25%;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
       from {
-        transform: scale(1);
+        transform: translateY(0px) scale(1);
       }
       to {
-        transform: scale(1.2);
+        transform: translateY(-30px) scale(1.08);
       }
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 5rem);
-      text-transform: uppercase;
-      margin-bottom: 60px;
-      line-height: 0.9;
     }
 
     section {
       padding: 100px 60px;
-      border-top: 1px solid var(--line);
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 6vw, 6rem);
+      line-height: 0.9;
+      margin-bottom: 60px;
+      text-transform: uppercase;
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
     }
 
     .project-card {
-      border: 1px solid var(--line);
-      background: #0d0d0d;
+      background: white;
+      border-radius: 30px;
       overflow: hidden;
-      transition: 0.4s;
-      cursor: pointer;
-      position: relative;
+      transition: 0.5s;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+      transform: rotate(-1deg);
+    }
+
+    .project-card:nth-child(2) {
+      transform: rotate(1deg);
+    }
+
+    .project-card:nth-child(3) {
+      transform: rotate(-2deg);
     }
 
     .project-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent);
+      transform: translateY(-12px) rotate(0deg);
     }
 
     .project-image {
@@ -172,119 +207,123 @@
       height: 100%;
       object-fit: cover;
       transition: 0.5s;
-      filter: grayscale(100%);
     }
 
     .project-card:hover img {
       transform: scale(1.05);
-      filter: grayscale(0%);
     }
 
     .project-content {
-      padding: 25px;
+      padding: 28px;
     }
 
     .project-content small {
-      color: var(--accent);
+      color: var(--orange);
       text-transform: uppercase;
+      font-weight: 700;
       letter-spacing: 2px;
-      font-size: 0.7rem;
     }
 
     .project-content h3 {
-      margin-top: 10px;
-      font-size: 1.7rem;
+      font-size: 2rem;
+      margin-top: 12px;
       line-height: 1;
     }
 
     .about {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
+      gap: 60px;
       align-items: center;
     }
 
     .about-text p {
-      color: var(--gray);
       line-height: 1.9;
+      color: var(--soft);
       font-size: 1rem;
     }
 
     .about-box {
       height: 500px;
-      border: 1px solid var(--line);
+      border-radius: 40px;
+      background: linear-gradient(135deg, var(--yellow), var(--orange), var(--blue));
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #111, #000);
     }
 
     .about-box::before {
-      content: "DESIGN";
+      content: 'ART';
       position: absolute;
-      font-size: 7rem;
-      opacity: 0.05;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(-90deg);
-      font-weight: bold;
+      transform: translate(-50%, -50%);
+      font-size: 8rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.25);
     }
 
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 18px;
       margin-top: 40px;
     }
 
     .skills span {
-      border: 1px solid var(--line);
-      padding: 12px 20px;
-      color: var(--gray);
+      background: white;
+      padding: 14px 22px;
+      border-radius: 100px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
       transition: 0.3s;
     }
 
     .skills span:hover {
-      border-color: var(--accent);
-      color: var(--text);
+      transform: translateY(-5px);
+      background: var(--green);
     }
 
     .contact {
       text-align: center;
-      padding-bottom: 140px;
+      padding-bottom: 150px;
     }
 
     .contact h2 {
-      font-size: clamp(3rem, 8vw, 8rem);
-      text-transform: uppercase;
+      font-size: clamp(3rem, 9vw, 8rem);
       line-height: 0.9;
-      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .contact p {
+      margin-top: 30px;
+      color: var(--soft);
+      font-size: 1rem;
     }
 
     .contact a {
       display: inline-block;
-      margin-top: 30px;
+      margin-top: 40px;
+      background: var(--text);
+      color: white;
       padding: 18px 40px;
-      border: 1px solid var(--accent);
-      color: var(--accent);
       text-decoration: none;
-      transition: 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      border-radius: 100px;
+      transition: 0.4s;
+      font-weight: 700;
     }
 
     .contact a:hover {
-      background: var(--accent);
-      color: black;
+      background: var(--orange);
+      transform: translateY(-5px);
     }
 
     footer {
-      border-top: 1px solid var(--line);
-      padding: 30px 60px;
+      padding: 35px 60px;
       display: flex;
       justify-content: space-between;
-      color: var(--gray);
       flex-wrap: wrap;
       gap: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
     }
 
     .fade {
@@ -339,7 +378,9 @@
   <main>
 
     <section class="hero">
-      <div class="circle"></div>
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="blob blob3"></div>
 
       <small>Graphic Designer / Visual Artist</small>
 
@@ -468,8 +509,12 @@
 
     window.addEventListener('scroll', () => {
       const scroll = window.scrollY;
-      document.querySelector('.circle').style.transform = `translateY(${scroll * 0.2}px)`;
+
+      document.querySelector('.blob1').style.transform = `translateY(${scroll * 0.1}px)`;
+      document.querySelector('.blob2').style.transform = `translateY(${scroll * -0.08}px)`;
+      document.querySelector('.blob3').style.transform = `translateY(${scroll * 0.05}px)`;
     });
   </script>
+
 </body>
 </html>
