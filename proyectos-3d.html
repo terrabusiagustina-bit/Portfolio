@@ -49,30 +49,59 @@
         }
 
         .project-detail h2 {
-            font-size: 2rem; text-transform: uppercase; margin-bottom: 20px;
+            font-size: 2.2rem; text-transform: uppercase; margin-bottom: 20px;
             background: var(--yellow); display: inline-block; padding: 5px 15px;
         }
 
-        .project-description {
-            font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; max-width: 800px;
+        .section-box {
+            border-left: 5px solid var(--blue);
+            padding-left: 20px;
+            margin-bottom: 30px;
         }
 
-        /* Contenedor de Media (Fotos y Videos) */
+        .section-box h3 {
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--red);
+        }
+
+        .project-description {
+            font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; max-width: 900px;
+        }
+
+        /* Pilares del Diseño */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .pillar-card {
+            background: var(--bg-canvas);
+            padding: 20px;
+            border: 2px solid var(--black);
+        }
+        .pillar-card b { display: block; text-transform: uppercase; margin-bottom: 5px; color: var(--blue); }
+
+        /* Contenedor de Media */
         .media-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px; margin-top: 30px;
         }
 
         .media-item {
             border: 3px solid var(--black); width: 100%; height: auto;
-            background: #eee;
+            background: #eee; transition: 0.3s;
         }
+        .media-item:hover { transform: scale(1.02); }
 
-        video { width: 100%; border: 3px solid var(--black); display: block; }
+        video { width: 100%; border: 3px solid var(--black); display: block; background: #000; }
         
+        .tag-container { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
         .tag {
-            display: inline-block; background: var(--black); color: white;
-            padding: 4px 10px; font-size: 0.8rem; margin-top: 10px;
+            background: var(--black); color: white;
+            padding: 6px 12px; font-size: 0.8rem; text-transform: uppercase; font-weight: 700;
         }
     </style>
 </head>
@@ -84,27 +113,67 @@
 
 <header>
     <h1>Modelado 3D</h1>
-    <p style="margin-bottom: 40px; font-weight: 500; color: var(--blue);">Portfolio de piezas tridimensionales y renderizado.</p>
+    <p style="margin-bottom: 40px; font-weight: 500; color: var(--blue);">Exploración de formas, texturas y realismo digital.</p>
 </header>
 
 <article class="project-detail">
-    <h2>Perfume en Blender</h2>
-    <p class="project-description">
-        Este proyecto consistió en el modelado high-poly de una botella de perfume premium. 
-        Trabajé especialmente en las físicas de los fluidos para el líquido interior y los materiales 
-        de vidrio con refracción realista.
-    </p>
+    <h2>Perfume de Alta Gama</h2>
+    
+    <div class="section-box">
+        <h3>Identidad Visual</h3>
+        <p class="project-description">
+            Proyecto orientado a mujeres (25-45 años). Buscamos transmitir felicidad, libertad y belleza a través de una estética sofisticada inspirada en la alta perfumería.
+        </p>
+    </div>
+
+    <div class="pillars">
+        <div class="pillar-card">
+            <b>Flor de Iris</b>
+            Símbolo de elegancia y feminidad. Eje central del aroma.
+        </div>
+        <div class="pillar-card">
+            <b>Prisma de Cristal</b>
+            Representa la luz y la luminosidad que refleja la vida.
+        </div>
+        <div class="pillar-card">
+            <b>Listón de Seda</b>
+            Evoca suavidad y lujo, integrándose al diseño del frasco.
+        </div>
+    </div>
+
+    <div class="section-box" style="border-color: var(--yellow);">
+        <h3>Ficha Técnica</h3>
+        <p class="project-description">
+            • <b>Modelado 3D:</b> Frasco de cristal (16.6 cm) con topología optimizada.<br>
+            • <b>Texturizado:</b> Uso intensivo de nodos en Blender para lograr refracciones realistas en vidrio y reflejos metálicos.<br>
+            • <b>Iluminación:</b> Configuración HDRI de estudio para un efecto cinematográfico de alta gama.
+        </p>
+    </div>
+
+    <div class="section-box" style="border-color: var(--red);">
+        <h3>Animación y Cinematografía</h3>
+        <p class="project-description">
+            • <b>Simulación de Tela:</b> El listón de seda danza en el aire mediante dinámicas de Cloth, logrando un movimiento natural y elegante.<br>
+            • <b>Cámara:</b> Aplicación de Keyframes para zooms fluidos y rotaciones de cámara 3/4 que resaltan cada detalle.
+        </p>
+    </div>
 
     <div class="media-grid">
-        <img src="tu-imagen-perfume-1.jpg" alt="Render frontal" class="media-item">
+        <img src="tu-render-1.jpg" alt="Render de Perfume" class="media-item">
+        <img src="tu-render-2.jpg" alt="Detalle de Cristal" class="media-item">
         
         <video controls poster="miniatura-video.jpg">
             <source src="tu-video-perfume.mp4" type="video/mp4">
-            Tu navegador no soplate el video.
+            Tu navegador no soporta el video.
         </video>
     </div>
     
-    <div class="tag">Herramientas: Blender / Cycles / Adobe Photoshop</div>
+    <div class="tag-container">
+        <div class="tag">Blender</div>
+        <div class="tag">Cycles</div>
+        <div class="tag">Cloth Simulation</div>
+        <div class="tag">Octane Render</div>
+    </div>
 </article>
 
 <script>
