@@ -59,18 +59,31 @@
             margin-bottom: 40px;
         }
 
-        .section-box h3 {
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--red);
-        }
-
         .project-description {
             font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; max-width: 900px;
         }
 
-        /* Grid de Proceso Creativo */
+        /* Botón Behance (Estilo Arte) */
+        .behance-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #0057ff;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 3px solid var(--black);
+            box-shadow: 6px 6px 0px var(--black);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .behance-btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 10px 10px 0px var(--yellow);
+        }
+
         .process-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -84,7 +97,6 @@
         }
         .process-card h4 { text-transform: uppercase; margin-bottom: 10px; font-size: 0.9rem; color: var(--blue); }
 
-        /* Media */
         .video-wrapper {
             border: 4px solid var(--black);
             background: #000;
@@ -92,19 +104,6 @@
             box-shadow: 10px 10px 0px var(--black);
         }
         video { width: 100%; display: block; }
-
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-        .image-gallery img {
-            width: 100%;
-            border: 2px solid var(--black);
-            transition: 0.3s;
-        }
-        .image-gallery img:hover { transform: scale(1.02); }
 
         .tag-container { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
         .tag {
@@ -128,7 +127,6 @@
     <h2>Cosas de Humanos</h2>
     
     <div class="section-box">
-        <h3>Concepto General</h3>
         <p class="project-description">
             Un universo ficticio donde animales antropomórficos replican las dinámicas absurdas y caóticas de la oficina humana. A través del humor y la sátira, el proyecto explora el estrés laboral, las reglas sin sentido y las situaciones exageradas de la cotidianeidad profesional.
         </p>
@@ -156,13 +154,11 @@
         </video>
     </div>
 
-    <div class="section-box" style="border-color: var(--yellow);">
-        <h3>Diseño de Personajes y Entornos</h3>
-        <div class="image-gallery">
-            <img src="character-design-1.jpg" alt="Diseño de Personaje Animal">
-            <img src="background-office.jpg" alt="Escenario de Oficina">
-            <img src="storyboard-frames.jpg" alt="Frames de Animación">
-        </div>
+    <div style="text-align: center; margin: 40px 0;">
+        <p style="font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">¿Quieres ver el desarrollo completo del universo?</p>
+        <a href="https://www.behance.net/gallery/231450877/Cosas-de-Humanos" target="_blank" class="behance-btn">
+            Ver proyecto en Behance
+        </a>
     </div>
 
     <div class="tag-container">
