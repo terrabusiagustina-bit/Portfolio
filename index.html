@@ -1,562 +1,534 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agustina — Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agustina Terrabusi — Portfolio</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family==Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    :root {
-      --bg: #f6f2ea;
-      --text: #111111;
-      --orange: #ff6b35;
-      --green: #9ef01a;
-      --blue: #3a86ff;
-      --yellow: #ffd60a;
-      --line: rgba(0,0,0,0.1);
-      --soft: #7a7a7a;
-    }
+:root{
+--bg:#f5ecdf;
+--text:#111;
+--green:#b7ff00;
+--orange:#ff6b2c;
+--blue:#445dff;
+--yellow:#ffd43b;
+--soft:#666;
+}
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Space Grotesk', sans-serif;
-      overflow-x: hidden;
-    }
+body{
+font-family:'Space Grotesk',sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+position:relative;
+}
 
-    ::selection {
-      background: var(--blue);
-      color: white;
-    }
+.texture{
+position:fixed;
+inset:0;
+background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+background-size:7px 7px;
+opacity:.4;
+pointer-events:none;
+z-index:-3;
+}
 
-    nav {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 50px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 999;
-      backdrop-filter: blur(10px);
-      background: rgba(246,242,234,0.7);
-      border-bottom: 1px solid var(--line);
-    }
+.particles{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-2;
+overflow:hidden;
+}
 
-    nav h1 {
-      font-size: 1rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
+.particles span{
+position:absolute;
+display:block;
+width:8px;
+height:8px;
+border-radius:50%;
+animation:move 15s linear infinite;
+opacity:.7;
+}
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 30px;
-    }
+.particles span:nth-child(1){background:var(--blue);top:10%;left:20%;animation-duration:14s;}
+.particles span:nth-child(2){background:var(--orange);top:40%;left:70%;animation-duration:20s;}
+.particles span:nth-child(3){background:var(--green);top:80%;left:30%;animation-duration:17s;}
+.particles span:nth-child(4){background:var(--yellow);top:60%;left:10%;animation-duration:22s;}
+.particles span:nth-child(5){background:var(--blue);top:30%;left:50%;animation-duration:19s;}
+.particles span:nth-child(6){background:var(--orange);top:75%;left:80%;animation-duration:16s;}
 
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.95rem;
-      transition: 0.3s;
-    }
+@keyframes move{
+0%{transform:translateY(0px) translateX(0px) scale(1);}
+50%{transform:translateY(-50px) translateX(30px) scale(1.5);}
+100%{transform:translateY(0px) translateX(0px) scale(1);}
+}
 
-    nav a:hover {
-      color: var(--orange);
-    }
+.cursor{
+width:25px;
+height:25px;
+background:var(--orange);
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+z-index:9999;
+mix-blend-mode:difference;
+}
 
-    .hero {
-      min-height: 100vh;
-      padding: 150px 60px 60px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+nav{
+position:fixed;
+width:100%;
+top:0;
+left:0;
+padding:30px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(12px);
+background:rgba(245,236,223,.65);
+z-index:999;
+}
 
-    .hero small {
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--orange);
-      margin-bottom: 25px;
-      font-weight: 700;
-    }
+nav h1{
+font-size:1rem;
+text-transform:uppercase;
+letter-spacing:2px;
+}
 
-    .hero h2 {
-      font-size: clamp(4rem, 11vw, 10rem);
-      line-height: 0.9;
-      text-transform: uppercase;
-      max-width: 1200px;
-      position: relative;
-      z-index: 2;
-    }
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
 
-    .hero p {
-      margin-top: 40px;
-      max-width: 550px;
-      line-height: 1.8;
-      color: var(--soft);
-      font-size: 1rem;
-      position: relative;
-      z-index: 2;
-    }
+nav a{
+text-decoration:none;
+color:var(--text);
+font-weight:500;
+}
 
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(70px);
-      opacity: 0.6;
-      animation: float 7s infinite alternate ease-in-out;
-    }
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:140px 60px 80px;
+position:relative;
+}
 
-    .blob1 {
-      width: 300px;
-      height: 300px;
-      background: var(--green);
-      top: 120px;
-      right: 80px;
-    }
+.hero h2{
+font-size:clamp(4rem,11vw,10rem);
+line-height:.88;
+text-transform:uppercase;
+max-width:1200px;
+position:relative;
+z-index:2;
+}
 
-    .blob2 {
-      width: 220px;
-      height: 220px;
-      background: var(--orange);
-      bottom: 100px;
-      left: 10%;
-      animation-delay: 1s;
-    }
+.hero p{
+margin-top:40px;
+max-width:700px;
+line-height:1.8;
+font-size:1rem;
+color:var(--soft);
+position:relative;
+z-index:2;
+}
 
-    .blob3 {
-      width: 250px;
-      height: 250px;
-      background: var(--blue);
-      top: 40%;
-      right: 25%;
-      animation-delay: 2s;
-    }
+.hero-tag{
+margin-bottom:20px;
+text-transform:uppercase;
+letter-spacing:3px;
+font-weight:700;
+color:var(--blue);
+}
 
-    @keyframes float {
-      from {
-        transform: translateY(0px) scale(1);
-      }
-      to {
-        transform: translateY(-30px) scale(1.08);
-      }
-    }
+.blob{
+position:absolute;
+filter:blur(90px);
+border-radius:50%;
+opacity:.6;
+animation:float 6s ease-in-out infinite alternate;
+}
 
-    section {
-      padding: 100px 60px;
-      position: relative;
-    }
+.blob1{
+width:300px;
+height:300px;
+background:var(--green);
+top:100px;
+right:100px;
+}
 
-    .section-title {
-      font-size: clamp(2.5rem, 6vw, 6rem);
-      line-height: 0.9;
-      margin-bottom: 60px;
-      text-transform: uppercase;
-    }
+.blob2{
+width:250px;
+height:250px;
+background:var(--orange);
+bottom:100px;
+left:0;
+}
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
-    }
+.blob3{
+width:220px;
+height:220px;
+background:var(--blue);
+right:25%;
+top:45%;
+}
 
-    .project-card {
-      background: white;
-      border-radius: 30px;
-      overflow: hidden;
-      transition: 0.5s;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-      transform: rotate(-1deg);
-    }
+@keyframes float{
+from{transform:translateY(0px);}
+to{transform:translateY(-30px);}
+}
 
-    .project-card:nth-child(2) {
-      transform: rotate(1deg);
-    }
+section{
+padding:100px 60px;
+}
 
-    .project-card:nth-child(3) {
-      transform: rotate(-2deg);
-    }
+.section-title{
+font-size:clamp(3rem,7vw,7rem);
+line-height:.9;
+margin-bottom:50px;
+text-transform:uppercase;
+}
 
-    .project-card:hover {
-      transform: translateY(-12px) rotate(0deg) scale(1.02);
-    }
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
 
-    .project-card {
-      animation: floating 5s ease-in-out infinite;
-    }
+.about-card{
+background:white;
+padding:40px;
+border-radius:35px;
+box-shadow:0 20px 40px rgba(0,0,0,.06);
+}
 
-    .project-card:nth-child(2) {
-      animation-delay: 1s;
-    }
+.about-card p{
+line-height:1.9;
+color:var(--soft);
+}
 
-    .project-card:nth-child(3) {
-      animation-delay: 2s;
-    }
+.about-visual{
+height:550px;
+border-radius:40px;
+background:linear-gradient(135deg,var(--yellow),var(--orange),var(--blue));
+position:relative;
+overflow:hidden;
+}
 
-    @keyframes floating {
-      0% {
-        transform: translateY(0px);
-      }
+.about-visual::before{
+content:'AGUSTINA';
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) rotate(-8deg);
+font-size:6rem;
+font-weight:700;
+color:rgba(255,255,255,.3);
+}
 
-      50% {
-        transform: translateY(-10px);
-      }
+.skills{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-top:35px;
+}
 
-      100% {
-        transform: translateY(0px);
-      }
-    }
+.skills span{
+background:var(--bg);
+padding:14px 20px;
+border-radius:100px;
+font-weight:500;
+}
 
-    .project-image {
-      width: 100%;
-      height: 350px;
-      overflow: hidden;
-    }
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
+}
 
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: 0.5s;
-    }
+.project-card{
+background:white;
+border-radius:35px;
+overflow:hidden;
+box-shadow:0 20px 40px rgba(0,0,0,.06);
+transition:.4s;
+animation:cardFloat 6s ease-in-out infinite;
+}
 
-    .project-card:hover img {
-      transform: scale(1.05);
-    }
+.project-card:nth-child(2){animation-delay:1s;}
+.project-card:nth-child(3){animation-delay:2s;}
+.project-card:nth-child(4){animation-delay:3s;}
 
-    .project-content {
-      padding: 28px;
-    }
+@keyframes cardFloat{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0px);}
+}
 
-    .project-content small {
-      color: var(--orange);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
+.project-card:hover{
+transform:translateY(-15px) scale(1.02);
+}
 
-    .project-content h3 {
-      font-size: 2rem;
-      margin-top: 12px;
-      line-height: 1;
-    }
+.project-card img{
+width:100%;
+height:340px;
+object-fit:cover;
+}
 
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
+.project-content{
+padding:30px;
+}
 
-    .about-text p {
-      line-height: 1.9;
-      color: var(--soft);
-      font-size: 1rem;
-    }
+.project-content small{
+text-transform:uppercase;
+letter-spacing:2px;
+font-weight:700;
+color:var(--orange);
+}
 
-    .about-box {
-      height: 500px;
-      border-radius: 40px;
-      background: linear-gradient(135deg, var(--yellow), var(--orange), var(--blue));
-      position: relative;
-      overflow: hidden;
-    }
+.project-content h3{
+font-size:2rem;
+margin-top:12px;
+}
 
-    .about-box::before {
-      content: 'ART';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 8rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.25);
-    }
+.contact{
+text-align:center;
+padding-bottom:140px;
+}
 
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 40px;
-    }
+.contact-box{
+margin-top:50px;
+display:flex;
+flex-direction:column;
+gap:20px;
+align-items:center;
+}
 
-    .skills span {
-      background: white;
-      padding: 14px 22px;
-      border-radius: 100px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      transition: 0.3s;
-    }
+.contact-item{
+background:white;
+padding:18px 28px;
+border-radius:100px;
+box-shadow:0 15px 30px rgba(0,0,0,.06);
+}
 
-    .skills span:hover {
-      transform: translateY(-5px);
-      background: var(--green);
-    }
+.contact h2{
+font-size:clamp(3rem,8vw,8rem);
+line-height:.9;
+text-transform:uppercase;
+}
 
-    .contact {
-      text-align: center;
-      padding-bottom: 150px;
-    }
+footer{
+padding:30px 60px;
+border-top:1px solid rgba(0,0,0,.08);
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+color:var(--soft);
+}
 
-    .contact h2 {
-      font-size: clamp(3rem, 9vw, 8rem);
-      line-height: 0.9;
-      text-transform: uppercase;
-    }
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
 
-    .contact p {
-      margin-top: 30px;
-      color: var(--soft);
-      font-size: 1rem;
-    }
+.fade.show{
+opacity:1;
+transform:translateY(0px);
+}
 
-    .contact a {
-      display: inline-block;
-      margin-top: 40px;
-      background: var(--text);
-      color: white;
-      padding: 18px 40px;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: 0.4s;
-      font-weight: 700;
-    }
+@media(max-width:900px){
+nav,section,.hero,footer{
+padding-left:20px;
+padding-right:20px;
+}
 
-    .contact a:hover {
-      background: var(--orange);
-      transform: translateY(-5px);
-    }
+.about{
+grid-template-columns:1fr;
+}
 
-    footer {
-      padding: 35px 60px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      border-top: 1px solid var(--line);
-      color: var(--soft);
-    }
+.hero h2{
+font-size:4rem;
+}
 
-    .fade {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: 1s;
-    }
-
-    .fade.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media(max-width: 900px) {
-      nav {
-        padding: 20px;
-      }
-
-      nav ul {
-        gap: 15px;
-      }
-
-      .hero,
-      section,
-      footer {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-
-      .about-box {
-        height: 300px;
-      }
-    }
-  .cursor {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      background: var(--orange);
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: difference;
-      transition: transform 0.1s linear;
-    }
-
-  </style>
+nav ul{
+display:none;
+}
+}
+</style>
 </head>
 <body>
 
-  <div class="cursor"></div>
+<div class="texture"></div>
 
-  <nav>
-    <h1>Agustina</h1>
+<div class="particles">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
 
-    <ul>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<div class="cursor"></div>
 
-  <main>
+<nav>
+<h1>Agustina Terrabusi</h1>
+<ul>
+<li><a href="#about">Sobre mí</a></li>
+<li><a href="#projects">Proyectos</a></li>
+<li><a href="#contact">Contacto</a></li>
+</ul>
+</nav>
 
-    <section class="hero">
-      <div class="blob blob1"></div>
-      <div class="blob blob2"></div>
-      <div class="blob blob3"></div>
+<section class="hero">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
 
-      <small>Diseñadora Digital / Artista Visual</small>
+<div class="hero-tag">Diseñadora Digital / Arte & Tecnología</div>
 
-      <h2>
-        Diseño<br>
-        Digital<br>
-        & Experiencias<br>
-        Visuales.
-      </h2>
+<h2>
+Experiencias<br>
+Digitales &<br>
+Universos<br>
+Visuales.
+</h2>
 
-      <p>
-        Soy diseñadora digital enfocada en experiencias visuales experimentales, desarrollo de videojuegos, animación, modelado 3D y diseño interactivo con una estética artística y futurista.
-      </p>
-    </section>
+<p>
+Soy diseñadora digital y estudiante de Arte y Diseño Digital, enfocada en la creación de experiencias visuales e interactivas. Desarrollo proyectos de modelado 3D, animación, videojuegos, diseño web y UX/UI. También tengo experiencia en marketing digital, gestión de redes sociales, branding, comunicación visual y desarrollo de páginas web con HTML y CSS.
+</p>
+</section>
 
-    <section id="projects">
-      <h2 class="section-title fade">Proyectos</h2>
+<section id="about">
+<h2 class="section-title fade">Sobre Mí</h2>
 
-      <div class="projects-grid">
+<div class="about">
+<div class="about-card fade">
+<p>
+Me interesa crear proyectos inmersivos donde el arte, la tecnología y el diseño se mezclen para construir experiencias visuales con personalidad propia.
 
-        <article class="project-card fade">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="Project">
-          </div>
+Trabajo con modelado 3D, motion graphics, videojuegos, fotografía, diseño interactivo y desarrollo web, explorando estéticas experimentales, futuristas y artísticas.
+</p>
 
-          <div class="project-content">
-            <small>Modelado 3D</small>
-            <h3>Personajes & Objetos</h3>
-          </div>
-        </article>
+<div class="skills">
+<span>Blender</span>
+<span>Unity</span>
+<span>Photoshop</span>
+<span>After Effects</span>
+<span>Figma</span>
+<span>HTML</span>
+<span>CSS</span>
+<span>Marketing Digital</span>
+</div>
+</div>
 
-        <article class="project-card fade">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Project">
-          </div>
+<div class="about-visual fade"></div>
+</div>
+</section>
 
-          <div class="project-content">
-            <small>Desarrollo de Videojuegos</small>
-            <h3>Out Of Bounds</h3>
-          </div>
-        </article>
+<section id="projects">
+<h2 class="section-title fade">Proyectos</h2>
 
-        <article class="project-card fade">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" alt="Project">
-          </div>
+<div class="projects-grid">
 
-          <div class="project-content">
-            <small>Animación</small>
-            <h3>Motion & Visuales</h3>
-          </div>
-        </article>
+<div class="project-card fade">
+<img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop">
+<div class="project-content">
+<small>Modelado 3D</small>
+<h3>Personajes & Escenarios</h3>
+</div>
+</div>
 
-      </div>
-    </section>
+<div class="project-card fade">
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
+<div class="project-content">
+<small>Desarrollo de Videojuegos</small>
+<h3>Out Of Bounds</h3>
+</div>
+</div>
 
-    <section id="about">
-      <div class="about">
+<div class="project-card fade">
+<img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop">
+<div class="project-content">
+<small>Arte</small>
+<h3>Visuales Experimentales</h3>
+</div>
+</div>
 
-        <div class="about-text fade">
-          <h2 class="section-title">
-            Sobre
-            Mí
-          </h2>
+<div class="project-card fade">
+<img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=1200&auto=format&fit=crop">
+<div class="project-content">
+<small>Fotografía</small>
+<h3>Composición & Narrativa</h3>
+</div>
+</div>
 
-          <p>
-            Soy estudiante de Diseño Digital y me interesa crear proyectos visuales inmersivos mezclando arte digital, animación, modelado 3D, videojuegos y experiencias interactivas.
+</div>
+</section>
 
-            Me inspiran las interfaces futuristas, las estéticas experimentales, el motion design y los mundos visuales creativos con mucha personalidad.
-          </p>
+<section id="contact" class="contact fade">
+<h2>
+Trabajemos<br>
+Juntos
+</h2>
 
-          <div class="skills">
-            <span>Photoshop</span>
-            <span>Illustrator</span>
-            <span>Blender</span>
-            <span>After Effects</span>
-            <span>UI Design</span>
-            <span>Branding</span>
-          </div>
-        </div>
+<div class="contact-box">
+<div class="contact-item">✉️ agustinaterrabusi15@gmail.com</div>
+<div class="contact-item">📱 3489355620</div>
+<div class="contact-item">🔗 linkedin.com/in/agustinaterrabusi15</div>
+<div class="contact-item">🎨 behance.net/agustinterrabu</div>
+</div>
+</section>
 
-        <div class="about-box fade"></div>
+<footer>
+<p>© 2026 Agustina Terrabusi</p>
+<p>Buenos Aires, Argentina</p>
+</footer>
 
-      </div>
-    </section>
+<script>
+const faders=document.querySelectorAll('.fade');
 
-    <section id="contact" class="contact fade">
-      <h2>
-        Trabajemos<br>
-        Juntos
-      </h2>
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+});
 
-      <p>
-        Podés contactarme para proyectos creativos, colaboraciones o trabajos freelance.
-      </p>
+faders.forEach(el=>observer.observe(el));
 
-      <a href="mailto:agustina@email.com">
-        Contactarme
-      </a>
-    </section>
+const cursor=document.querySelector('.cursor');
 
-  </main>
+document.addEventListener('mousemove',(e)=>{
+cursor.style.left=e.clientX+'px';
+cursor.style.top=e.clientY+'px';
+});
 
-  <footer>
-    <p>© 2026 Agustina Terrabusi</p>
-    <p>Buenos Aires, Argentina</p>
-  </footer>
+window.addEventListener('scroll',()=>{
+const scroll=window.scrollY;
 
-  <script>
-    const faders = document.querySelectorAll('.fade');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    });
-
-    faders.forEach(el => observer.observe(el));
-
-    const cursor = document.querySelector('.cursor');
-
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-
-    window.addEventListener('scroll', () => {
-      const scroll = window.scrollY;
-
-      document.querySelector('.blob1').style.transform = `translateY(${scroll * 0.1}px)`;
-      document.querySelector('.blob2').style.transform = `translateY(${scroll * -0.08}px)`;
-      document.querySelector('.blob3').style.transform = `translateY(${scroll * 0.05}px)`;
-    });
-  </script>
+document.querySelector('.blob1').style.transform=`translateY(${scroll*0.1}px)`;
+document.querySelector('.blob2').style.transform=`translateY(${scroll*-0.08}px)`;
+document.querySelector('.blob3').style.transform=`translateY(${scroll*0.05}px)`;
+});
+</script>
 
 </body>
 </html>
