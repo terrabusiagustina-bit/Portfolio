@@ -193,7 +193,33 @@
     }
 
     .project-card:hover {
-      transform: translateY(-12px) rotate(0deg);
+      transform: translateY(-12px) rotate(0deg) scale(1.02);
+    }
+
+    .project-card {
+      animation: floating 5s ease-in-out infinite;
+    }
+
+    .project-card:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .project-card:nth-child(3) {
+      animation-delay: 2s;
+    }
+
+    @keyframes floating {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
     }
 
     .project-image {
@@ -361,9 +387,23 @@
         height: 300px;
       }
     }
+  .cursor {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--orange);
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: transform 0.1s linear;
+    }
+
   </style>
 </head>
 <body>
+
+  <div class="cursor"></div>
 
   <nav>
     <h1>Agustina</h1>
@@ -382,23 +422,22 @@
       <div class="blob blob2"></div>
       <div class="blob blob3"></div>
 
-      <small>Graphic Designer / Visual Artist</small>
+      <small>Diseñadora Digital / Artista Visual</small>
 
       <h2>
+        Diseño<br>
         Digital<br>
-        Experiences<br>
-        & Visual<br>
-        Design.
+        & Experiencias<br>
+        Visuales.
       </h2>
 
       <p>
-        Soy diseñadora gráfica enfocada en experiencias visuales experimentales,
-        identidad digital, motion graphics y estética futurista/editorial.
+        Soy diseñadora digital enfocada en experiencias visuales experimentales, desarrollo de videojuegos, animación, modelado 3D y diseño interactivo con una estética artística y futurista.
       </p>
     </section>
 
     <section id="projects">
-      <h2 class="section-title fade">Selected Projects</h2>
+      <h2 class="section-title fade">Proyectos</h2>
 
       <div class="projects-grid">
 
@@ -408,8 +447,8 @@
           </div>
 
           <div class="project-content">
-            <small>Branding</small>
-            <h3>Menta y Limón</h3>
+            <small>Modelado 3D</small>
+            <h3>Personajes & Objetos</h3>
           </div>
         </article>
 
@@ -419,7 +458,7 @@
           </div>
 
           <div class="project-content">
-            <small>Digital Art</small>
+            <small>Desarrollo de Videojuegos</small>
             <h3>Out Of Bounds</h3>
           </div>
         </article>
@@ -430,8 +469,8 @@
           </div>
 
           <div class="project-content">
-            <small>Installation</small>
-            <h3>Memoria Espacial</h3>
+            <small>Animación</small>
+            <h3>Motion & Visuales</h3>
           </div>
         </article>
 
@@ -443,17 +482,14 @@
 
         <div class="about-text fade">
           <h2 class="section-title">
-            About
-            Me
+            Sobre
+            Mí
           </h2>
 
           <p>
-            Soy estudiante de diseño gráfico y me interesa crear proyectos visuales
-            con una estética experimental, mezclando diseño editorial, arte digital,
-            motion graphics y experiencias inmersivas.
+            Soy estudiante de Diseño Digital y me interesa crear proyectos visuales inmersivos mezclando arte digital, animación, modelado 3D, videojuegos y experiencias interactivas.
 
-            Me inspiran los sistemas futuristas, las interfaces glitch,
-            el cyberpunk y las composiciones tipográficas grandes.
+            Me inspiran las interfaces futuristas, las estéticas experimentales, el motion design y los mundos visuales creativos con mucha personalidad.
           </p>
 
           <div class="skills">
@@ -473,24 +509,23 @@
 
     <section id="contact" class="contact fade">
       <h2>
-        Let's<br>
-        Work<br>
-        Together
+        Trabajemos<br>
+        Juntos
       </h2>
 
       <p>
-        Contactame para proyectos, colaboraciones o trabajos freelance.
+        Podés contactarme para proyectos creativos, colaboraciones o trabajos freelance.
       </p>
 
       <a href="mailto:agustina@email.com">
-        Contact Me
+        Contactarme
       </a>
     </section>
 
   </main>
 
   <footer>
-    <p>© 2026 Agustina Portfolio</p>
+    <p>© 2026 Agustina Terrabusi</p>
     <p>Buenos Aires, Argentina</p>
   </footer>
 
@@ -506,6 +541,13 @@
     });
 
     faders.forEach(el => observer.observe(el));
+
+    const cursor = document.querySelector('.cursor');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
 
     window.addEventListener('scroll', () => {
       const scroll = window.scrollY;
