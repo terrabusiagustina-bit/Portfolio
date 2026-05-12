@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fotografía — Agustina Terrabusi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #f0ede4; --accent: #e63946; --black: #111111; }
+        /* ... mismo estilo que arriba ... */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: var(--bg); background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png"); padding: 60px 10%; }
+        .cursor { width: 12px; height: 12px; background: var(--black); border-radius: 50%; position: fixed; pointer-events: none; z-index: 1000; }
+        .back { text-decoration: none; color: var(--black); font-weight: 700; text-transform: uppercase; border: 2px solid var(--black); padding: 10px 20px; display: inline-block; transition: 0.3s; background: white; margin-bottom: 40px;}
+        .back:hover { background: var(--accent); color: white; transform: translateX(-5px); }
+        h1 { font-size: clamp(3rem, 10vw, 6rem); text-transform: uppercase; letter-spacing: -3px; line-height: 0.9; margin-bottom: 40px; }
+        .item { background: white; border: 4px solid var(--black); padding: 30px; box-shadow: 15px 15px 0px var(--accent); margin-bottom: 60px; }
+        .item h2 { text-transform: uppercase; margin-bottom: 15px; font-size: 2rem; border-left: 10px solid var(--accent); padding-left: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 10px; margin-top: 20px; }
+        .grid img { width: 100%; border: 2px solid var(--black); filter: sepia(0.2); }
+        .grid img:hover { filter: sepia(0); }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <a href="index.html" class="back">← Volver</a>
+    <h1>Fotografía</h1>
+    <article class="item">
+        <h2>Serie Fotográfica</h2>
+        <p>Detalles sobre la composición, equipo utilizado y el mensaje detrás de la captura.</p>
+        <div class="grid">
+            <img src="tu-foto-1.jpg">
+            <img src="tu-foto-2.jpg">
+        </div>
+    </article>
+    <script>
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    </script>
+</body>
+</html>
