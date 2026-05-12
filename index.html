@@ -7,616 +7,231 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+:root {
+    --bg: #0d0d0d; /* Fondo oscuro para que resalten los colores */
+    --text: #ffffff;
+    --accent-green: #b7ff00;
+    --accent-orange: #ff6b2c;
+    --accent-blue: #445dff;
+    --card-bg: rgba(255, 255, 255, 0.05);
 }
 
-:root{
---bg:#f5ecdf;
---text:#111;
---green:#b7ff00;
---orange:#ff6b2c;
---blue:#445dff;
---yellow:#ffd43b;
---soft:#666;
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; } /* Ocultamos cursor default */
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-body{
-font-family:'Space Grotesk',sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
-position:relative;
-line-height:1.4;
+/* Grano de película artístico de fondo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1000;
 }
 
-.texture{
-position:fixed;
-inset:0;
-background:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-background-size:80px 80px;
-opacity:.15;
-pointer-events:none;
-z-index:-3;
+/* Custom Cursor */
+.cursor-dot {
+    width: 8px; height: 8px; background: white;
+    position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s;
+}
+.cursor-outline {
+    width: 40px; height: 40px; border: 2px solid var(--accent-green);
+    position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: all 0.2s ease-out;
 }
 
-.particles{
-position:fixed;
-inset:0;
-pointer-events:none;
-z-index:-2;
-overflow:hidden;
+nav {
+    position: fixed; width: 100%; top: 0; padding: 30px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100; mix-blend-mode: difference;
 }
 
-.particles span{
-position:absolute;
-display:block;
-width:420px;
-height:420px;
-border-radius:50%;
-animation:move 24s ease-in-out infinite;
-opacity:.14;
-filter:blur(120px);
-mix-blend-mode:multiply;
+nav h1 { font-family: 'Anton', sans-serif; font-size: 1.2rem; letter-spacing: 2px; }
+nav ul { display: flex; gap: 40px; list-style: none; }
+nav a { text-decoration: none; color: white; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; }
+
+.hero {
+    height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 0 10%; position: relative;
 }
 
-.particles span:nth-child(1){background:#6f7cff;top:-5%;left:60%;animation-duration:22s;}
-.particles span:nth-child(2){background:#d8ff61;top:15%;left:75%;animation-duration:28s;}
-.particles span:nth-child(3){background:#ffb38a;top:65%;left:10%;animation-duration:24s;}
-.particles span:nth-child(4){background:#89d4ff;top:40%;left:40%;animation-duration:30s;}
-.particles span:nth-child(5){background:#ffe27a;top:85%;left:70%;animation-duration:26s;}
-.particles span:nth-child(6){background:#ffc6de;top:70%;left:55%;animation-duration:21s;}
-.particles span:nth-child(7){background:#b8ffcf;top:25%;left:-5%;animation-duration:32s;}
-.particles span:nth-child(2){background:var(--orange);top:40%;left:70%;animation-duration:20s;}
-.particles span:nth-child(3){background:var(--green);top:80%;left:30%;animation-duration:17s;}
-.particles span:nth-child(4){background:var(--yellow);top:60%;left:10%;animation-duration:22s;}
-.particles span:nth-child(5){background:var(--blue);top:30%;left:50%;animation-duration:19s;}
-.particles span:nth-child(6){background:var(--orange);top:75%;left:80%;animation-duration:16s;}
-.particles span:nth-child(7){background:var(--green);top:20%;left:85%;animation-duration:25s;}
-.particles span:nth-child(8){background:var(--yellow);top:90%;left:55%;animation-duration:13s;}
-.particles span:nth-child(2){background:var(--orange);color:var(--orange);top:40%;left:70%;animation-duration:20s;}
-.particles span:nth-child(3){background:var(--green);color:var(--green);top:80%;left:30%;animation-duration:17s;}
-.particles span:nth-child(4){background:var(--yellow);color:var(--yellow);top:60%;left:10%;animation-duration:22s;}
-.particles span:nth-child(5){background:var(--blue);color:var(--blue);top:30%;left:50%;animation-duration:19s;}
-.particles span:nth-child(6){background:var(--orange);color:var(--orange);top:75%;left:80%;animation-duration:16s;}
-.particles span:nth-child(7){background:var(--green);color:var(--green);top:20%;left:85%;animation-duration:25s;}
-.particles span:nth-child(8){background:var(--yellow);color:var(--yellow);top:90%;left:55%;animation-duration:13s;}
-.particles span:nth-child(2){background:var(--orange);top:40%;left:70%;animation-duration:20s;}
-.particles span:nth-child(3){background:var(--green);top:80%;left:30%;animation-duration:17s;}
-.particles span:nth-child(4){background:var(--yellow);top:60%;left:10%;animation-duration:22s;}
-.particles span:nth-child(5){background:var(--blue);top:30%;left:50%;animation-duration:19s;}
-.particles span:nth-child(6){background:var(--orange);top:75%;left:80%;animation-duration:16s;}
-
-@keyframes move{
-0%{transform:translate3d(0,0,0) scale(1);}
-25%{transform:translate3d(80px,-40px,0) scale(1.08);}
-50%{transform:translate3d(-60px,60px,0) scale(1.12);}
-75%{transform:translate3d(40px,20px,0) scale(1.05);}
-100%{transform:translate3d(0,0,0) scale(1);}
+.hero h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(4rem, 15vw, 12rem);
+    line-height: 0.85;
+    text-transform: uppercase;
+    z-index: 2;
 }
 
-.cursor{
-width:25px;
-height:25px;
-background:var(--orange);
-border-radius:50%;
-position:fixed;
-pointer-events:none;
-z-index:9999;
-mix-blend-mode:difference;
+.hero-sub {
+    color: var(--accent-green);
+    font-weight: 700; letter-spacing: 5px; margin-bottom: 20px;
 }
 
-nav{
-position:fixed;
-width:100%;
-top:0;
-left:0;
-padding:30px 60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-backdrop-filter:blur(12px);
-background:rgba(245,236,223,.65);
-z-index:999;
+/* Blobs de color animados en el fondo */
+.blob {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; z-index: 1; animation: orbit 20s infinite linear;
+}
+.blob-1 { width: 400px; height: 400px; background: var(--accent-blue); top: 10%; right: 10%; }
+.blob-2 { width: 300px; height: 300px; background: var(--accent-orange); bottom: 10%; left: 10%; animation-delay: -5s; }
+
+@keyframes orbit {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -50px) scale(1.1); }
+    66% { transform: translate(-30px, 40px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
 }
 
-nav h1{
-font-size:1rem;
-text-transform:uppercase;
-letter-spacing:2px;
+/* Proyectos con Glassmorphism */
+#projects { padding: 100px 10%; }
+.section-title { font-family: 'Anton', sans-serif; font-size: 4rem; margin-bottom: 50px; color: var(--accent-green); }
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
 }
 
-nav ul{
-display:flex;
-gap:30px;
-list-style:none;
+.project-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 450px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-nav a{
-text-decoration:none;
-color:var(--text);
-font-weight:500;
+.project-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--accent-green);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
-.hero{
-min-height:100vh;
-display:grid;
-grid-template-columns:1.1fr 0.9fr;
-align-items:center;
-padding:170px 70px 100px;
-position:relative;
-gap:60px;
+.project-card img {
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s;
 }
 
-.hero h2{
-font-family:'Anton', sans-serif;
-font-size:clamp(5rem,9vw,8.5rem);
-line-height:.9;
-text-transform:uppercase;
-max-width:780px;
-position:relative;
-z-index:2;
-letter-spacing:1px;
-font-weight:400;
+.project-card:hover img { opacity: 1; transform: scale(1.1); }
+
+.project-info {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
 }
 
-.hero p{
-margin-top:38px;
-max-width:560px;
-line-height:1.9;
-font-size:1rem;
-color:#555;
-position:relative;
-z-index:2;
+/* Contacto tipo "Call to Action" */
+.contact { text-align: center; padding: 150px 10%; }
+.btn-contact {
+    display: inline-block; padding: 20px 50px; border: 2px solid white;
+    border-radius: 50px; font-family: 'Anton', sans-serif; font-size: 2rem;
+    color: white; text-decoration: none; transition: 0.3s;
 }
+.btn-contact:hover { background: white; color: black; transform: scale(1.1); }
 
-.hero-tag{
-margin-bottom:20px;
-text-transform:uppercase;
-letter-spacing:3px;
-font-weight:700;
-color:var(--blue);
-}
+/* Animación de entrada */
+.reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-.blob{
-position:absolute;
-filter:blur(100px);
-border-radius:50%;
-opacity:.18;
-animation:float 18s ease-in-out infinite alternate;
-mix-blend-mode:multiply;
-}
-
-.blob1{
-width:420px;
-height:420px;
-background:#d9ff66;
-top:0;
-right:0;
-}
-
-.blob2{
-width:300px;
-height:300px;
-background:#ffb89d;
-bottom:5%;
-left:-5%;
-}
-
-.blob3{
-width:260px;
-height:260px;
-background:#aab7ff;
-right:30%;
-top:35%;
-}
-
-@keyframes float{
-from{transform:translateY(0px);}
-to{transform:translateY(-30px);}
-}
-
-section{
-padding:100px 60px;
-}
-
-.section-title{
-font-family:'Anton', sans-serif;
-letter-spacing:2px;
-position:relative;
-display:inline-block;
-font-size:clamp(3rem,7vw,7rem);
-line-height:.9;
-margin-bottom:50px;
-text-transform:uppercase;
-}
-
-.section-title::after{
-content:'';
-position:absolute;
-left:0;
-bottom:-10px;
-width:100%;
-height:8px;
-background:linear-gradient(90deg,#ff9f7f,#7280ff,#d2ff61);
-border-radius:100px;
-opacity:.9;
-}
-
-.about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
-}
-
-.about-card{
-background:rgba(255,255,255,0.65);
-backdrop-filter:blur(16px);
-padding:45px;
-border-radius:32px;
-border:1px solid rgba(255,255,255,.4);
-box-shadow:0 10px 40px rgba(0,0,0,.05);
-}
-
-.about-card p{
-line-height:1.9;
-color:var(--soft);
-}
-
-.about-visual{
-height:550px;
-border-radius:40px;
-background:linear-gradient(135deg,var(--yellow),var(--orange),var(--blue));
-position:relative;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-}
-
-.about-visual img{
-width:100%;
-height:100%;
-object-fit:cover;
-border-radius:30px;
-position:relative;
-z-index:2;
-}
-
-.about-visual::before{
-content:'AGUSTINA';
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%) rotate(-8deg);
-font-size:6rem;
-font-weight:700;
-color:rgba(255,255,255,.3);
-}
-
-.skills{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
-margin-top:35px;
-}
-
-.skills span{
-background:var(--bg);
-padding:14px 20px;
-border-radius:100px;
-font-weight:500;
-}
-
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:35px;
-}
-
-.project-card{
-background:rgba(255,255,255,0.7);
-backdrop-filter:blur(12px);
-border-radius:32px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.5);
-box-shadow:0 10px 35px rgba(0,0,0,.05);
-transition:.45s;
-}
-
-.project-card:nth-child(2){animation-delay:1s;}
-.project-card:nth-child(3){animation-delay:2s;}
-.project-card:nth-child(4){animation-delay:3s;}
-
-@keyframes cardFloat{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-4px);}
-100%{transform:translateY(0px);}
-}
-50%{transform:translateY(-12px);}
-100%{transform:translateY(0px);}
-}
-
-.project-card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 50px rgba(0,0,0,.08);
-}
-
-.project-card img{
-width:100%;
-height:340px;
-object-fit:cover;
-}
-
-.project-content{
-padding:30px;
-}
-
-.project-content small{
-text-transform:uppercase;
-letter-spacing:2px;
-font-weight:700;
-color:var(--orange);
-}
-
-.project-content h3{
-font-size:2rem;
-margin-top:12px;
-}
-
-.contact{
-text-align:center;
-padding-bottom:140px;
-}
-
-.contact-box{
-margin-top:50px;
-display:flex;
-flex-direction:column;
-gap:20px;
-align-items:center;
-}
-
-.contact-item{
-text-decoration:none;
-color:var(--text);
-transition:.4s;
-background:white;
-padding:18px 28px;
-border-radius:100px;
-box-shadow:0 15px 30px rgba(0,0,0,.06);
-}
-
-.contact-item:hover{
-transform:translateY(-8px) scale(1.03);
-background:linear-gradient(90deg,var(--green),var(--yellow));
-}
-
-.contact h2{
-font-family:'Anton', sans-serif;
-letter-spacing:2px;
-font-size:clamp(3rem,8vw,8rem);
-line-height:.9;
-text-transform:uppercase;
-}
-
-footer{
-padding:30px 60px;
-border-top:1px solid rgba(0,0,0,.08);
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:20px;
-color:var(--soft);
-}
-
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-
-.fade.show{
-opacity:1;
-transform:translateY(0px);
-}
-
-@media(max-width:1100px){
-.hero{
-grid-template-columns:1fr;
-}
-
-.hero h2{
-font-size:5rem;
-max-width:100%;
-}
-}
-
-@media(max-width:900px){
-nav,section,.hero,footer{
-padding-left:20px;
-padding-right:20px;
-}
-
-.about{
-grid-template-columns:1fr;
-}
-
-.hero h2{
-font-size:4rem;
-}
-
-nav ul{
-display:none;
-}
+@media (max-width: 768px) {
+    nav { padding: 20px; }
+    .hero h2 { font-size: 5rem; }
 }
 </style>
 </head>
 <body>
 
-<div class="texture"></div>
-
-<div class="particles">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div>
-
-<div class="cursor"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
 
 <nav>
-<h1>Agustina Terrabusi</h1>
-<ul>
-<li><a href="#about">Sobre mí</a></li>
-<li><a href="#projects">Proyectos</a></li>
-<li><a href="#contact">Contacto</a></li>
-</ul>
+    <h1>A. TERRABUSI</h1>
+    <ul>
+        <li><a href="#projects" class="hover-target">Proyectos</a></li>
+        <li><a href="#about" class="hover-target">Bio</a></li>
+        <li><a href="#contact" class="hover-target">Contacto</a></li>
+    </ul>
 </nav>
 
 <section class="hero">
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
-<div class="blob blob3"></div>
-
-<div class="hero-tag">Diseñadora Digital / Arte & Tecnología</div>
-
-<h2>
-Agustina<br>
-Terrabusi<br>
-Diseñadora<br>
-Digital.
-</h2>
-
-<p>
-Soy diseñadora digital y estudiante de Arte y Diseño Digital, enfocada en la creación de experiencias visuales e interactivas. Desarrollo proyectos de modelado 3D, animación, videojuegos, diseño web y UX/UI. También tengo experiencia en marketing digital, gestión de redes sociales, branding, comunicación visual y desarrollo de páginas web con HTML y CSS.
-</p>
-</section>
-
-<section id="about">
-<h2 class="section-title fade">Sobre Mí</h2>
-
-<div class="about">
-<div class="about-card fade">
-<p>
-Me interesa crear proyectos inmersivos donde el arte, la tecnología y el diseño se mezclen para construir experiencias visuales con identidad propia.
-
-Trabajo con modelado 3D, motion graphics, videojuegos, fotografía, diseño interactivo y desarrollo web, explorando técncias y estilos.
-</p>
-
-<div class="skills">
-<span>Blender</span>
-<span>Unity</span>
-<span>Illustrator</span>
-<span>Photoshop</span>
-<span>Premiere</span>
-<span>After Effects</span>
-<span>Figma</span>
-<span>HTML</span>
-<span>CSS</span>
-<span>Canva</span>
-</div>
-</div>
-
-<div class="about-visual fade">
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop" alt="Agustina">
-</div>
-</div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <p class="hero-sub">DISEÑO • ARTE • 3D</p>
+    <h2>AGUSTINA<br>TERRABUSI</h2>
 </section>
 
 <section id="projects">
-<h2 class="section-title fade">Proyectos</h2>
-
-<div class="projects-grid">
-
-<div class="project-card fade">
-<img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop">
-<div class="project-content">
-<h3>Modelado 3D</h3>
-</div>
-</div>
-
-<div class="project-card fade">
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
-<div class="project-content">
-<h3>Desarrollo De Videojuegos</h3>
-</div>
-</div>
-
-<div class="project-card fade">
-<img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop">
-<div class="project-content">
-<h3>Arte</h3>
-</div>
-</div>
-
-<div class="project-card fade">
-<img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=1200&auto=format&fit=crop">
-<div class="project-content">
-<h3>Fotografía</h3>
-</div>
-</div>
-
-</div>
+    <h2 class="section-title reveal">PROYECTOS</h2>
+    <div class="projects-grid">
+        <div class="project-card reveal hover-target">
+            <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200" alt="3D">
+            <div class="project-info">
+                <h3>Modelado 3D</h3>
+                <p>Blender & Octane</p>
+            </div>
+        </div>
+        <div class="project-card reveal hover-target">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200" alt="Games">
+            <div class="project-info">
+                <h3>Videojuegos</h3>
+                <p>Unity Engine</p>
+            </div>
+        </div>
+        </div>
 </section>
 
-<section id="contact" class="contact fade">
-<h2>
-Trabajemos<br>
-Juntos
-</h2>
-
-<div class="contact-box">
-<a class="contact-item" href="mailto:agustinaterrabusi15@gmail.com">✉️ agustinaterrabusi15@gmail.com</a>
-<a class="contact-item" href="https://wa.me/543489355620" target="_blank">📱 3489355620</a>
-<a class="contact-item" href="https://www.linkedin.com/in/agustinaterrabusi15" target="_blank">🔗 LinkedIn</a>
-</div>
+<section id="contact" class="contact">
+    <h2 class="reveal">¿TIENES UNA IDEA?</h2>
+    <a href="mailto:agustinaterrabusi15@gmail.com" class="btn-contact reveal hover-target">HABLEMOS</a>
 </section>
-
-<footer>
-<p>© 2026 Agustina Terrabusi</p>
-<p>Buenos Aires, Argentina</p>
-</footer>
 
 <script>
-const faders=document.querySelectorAll('.fade');
+    // Custom Cursor Logic
+    const dot = document.querySelector('.cursor-dot');
+    const outline = document.querySelector('.cursor-outline');
+    const hoverTargets = document.querySelectorAll('.hover-target');
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('show');
-}
-});
-});
+    window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
 
-faders.forEach(el=>observer.observe(el));
+        dot.style.left = `${posX}px`;
+        dot.style.top = `${posY}px`;
 
-const cursor=document.querySelector('.cursor');
+        outline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
 
-document.addEventListener('mousemove',(e)=>{
-cursor.style.left=e.clientX+'px';
-cursor.style.top=e.clientY+'px';
-});
+    hoverTargets.forEach(target => {
+        target.addEventListener('mouseenter', () => {
+            outline.style.transform = 'scale(2)';
+            outline.style.background = 'rgba(183, 255, 0, 0.2)';
+        });
+        target.addEventListener('mouseleave', () => {
+            outline.style.transform = 'scale(1)';
+            outline.style.background = 'transparent';
+        });
+    });
 
-window.addEventListener('scroll',()=>{
-const scroll=window.scrollY;
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
 
-document.querySelector('.blob1').style.transform=`translateY(${scroll*0.1}px)`;
-document.querySelector('.blob2').style.transform=`translateY(${scroll*-0.08}px)`;
-document.querySelector('.blob3').style.transform=`translateY(${scroll*0.05}px)`;
-});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
