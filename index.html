@@ -1,237 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Agustina Terrabusi — Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agustina Terrabusi — Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta extraída de la imagen de Basquiat */
+            --bg-canvas: #e8e2d2; /* Crema sucio de fondo */
+            --blue: #0099cc;
+            --yellow: #ffcc00;
+            --red: #e63946;
+            --black: #111111;
+            --text-main: #111;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
-:root {
-    --bg: #0d0d0d; /* Fondo oscuro para que resalten los colores */
-    --text: #ffffff;
-    --accent-green: #b7ff00;
-    --accent-orange: #ff6b2c;
-    --accent-blue: #445dff;
-    --card-bg: rgba(255, 255, 255, 0.05);
-}
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            overflow-x: hidden;
+            /* Textura de lienzo de fondo */
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; } /* Ocultamos cursor default */
+        /* Elementos flotantes tipo Basquiat */
+        .sketch-element {
+            position: fixed; pointer-events: none; z-index: -1; opacity: 0.6;
+        }
 
-body {
-    font-family: 'Space Grotesk', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
+        /* Cursor interactivo */
+        .cursor {
+            width: 20px; height: 20px; border: 2px solid var(--black); border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease;
+        }
 
-/* Grano de película artístico de fondo */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: 1000;
-}
+        nav {
+            position: fixed; width: 100%; top: 0; padding: 25px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; mix-blend-mode: multiply;
+        }
+        nav h1 { font-size: 1.2rem; font-weight: 700; letter-spacing: -1px; text-transform: uppercase; }
+        nav ul { display: flex; gap: 30px; list-style: none; }
+        nav a { text-decoration: none; color: var(--black); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; border-bottom: 2px solid transparent; transition: 0.3s; }
+        nav a:hover { border-bottom: 2px solid var(--red); }
 
-/* Custom Cursor */
-.cursor-dot {
-    width: 8px; height: 8px; background: white;
-    position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s;
-}
-.cursor-outline {
-    width: 40px; height: 40px; border: 2px solid var(--accent-green);
-    position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: all 0.2s ease-out;
-}
+        .hero {
+            min-height: 100vh; padding: 150px 10%;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .hero-tag { color: var(--blue); font-weight: 700; margin-bottom: 10px; letter-spacing: 2px; }
+        .hero h2 {
+            font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9;
+            text-transform: uppercase; font-weight: 700; letter-spacing: -4px;
+        }
+        .hero p { max-width: 600px; margin-top: 30px; font-size: 1.1rem; line-height: 1.6; }
 
-nav {
-    position: fixed; width: 100%; top: 0; padding: 30px 60px;
-    display: flex; justify-content: space-between; align-items: center;
-    z-index: 100; mix-blend-mode: difference;
-}
+        section { padding: 100px 10%; position: relative; }
+        .section-title {
+            font-size: 4rem; text-transform: uppercase; font-weight: 700;
+            margin-bottom: 40px; position: relative; display: inline-block;
+        }
+        /* Subrayado tipo trazo de pincel */
+        .section-title::after {
+            content: ''; position: absolute; bottom: 5px; left: 0; width: 100%;
+            height: 15px; background: var(--yellow); z-index: -1; transform: rotate(-1deg);
+        }
 
-nav h1 { font-family: 'Anton', sans-serif; font-size: 1.2rem; letter-spacing: 2px; }
-nav ul { display: flex; gap: 40px; list-style: none; }
-nav a { text-decoration: none; color: white; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; }
+        .about-card {
+            background: white; border: 3px solid var(--black);
+            padding: 40px; position: relative; box-shadow: 10px 10px 0px var(--blue);
+            transition: 0.4s;
+        }
+        .about-card:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px var(--red); }
 
-.hero {
-    height: 100vh; display: flex; flex-direction: column; justify-content: center;
-    padding: 0 10%; position: relative;
-}
+        .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+        .skills span {
+            padding: 8px 15px; border: 1px solid var(--black);
+            font-weight: 500; font-size: 0.8rem; transition: 0.3s;
+        }
+        .skills span:hover { background: var(--black); color: white; }
 
-.hero h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(4rem, 15vw, 12rem);
-    line-height: 0.85;
-    text-transform: uppercase;
-    z-index: 2;
-}
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+        }
+        .project-card {
+            border: 3px solid var(--black); overflow: hidden; background: white;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .project-card:hover { transform: rotate(1deg) scale(1.02); }
+        .project-card img { width: 100%; height: 300px; object-fit: cover; border-bottom: 3px solid var(--black); }
+        .project-content { padding: 20px; }
 
-.hero-sub {
-    color: var(--accent-green);
-    font-weight: 700; letter-spacing: 5px; margin-bottom: 20px;
-}
+        .contact-box {
+            display: flex; flex-direction: column; gap: 15px; align-items: flex-start;
+        }
+        .contact-item {
+            font-size: 1.5rem; text-decoration: none; color: var(--black);
+            font-weight: 700; border-bottom: 4px solid var(--blue); transition: 0.3s;
+        }
+        .contact-item:hover { border-bottom-color: var(--yellow); padding-left: 10px; }
 
-/* Blobs de color animados en el fondo */
-.blob {
-    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; z-index: 1; animation: orbit 20s infinite linear;
-}
-.blob-1 { width: 400px; height: 400px; background: var(--accent-blue); top: 10%; right: 10%; }
-.blob-2 { width: 300px; height: 300px; background: var(--accent-orange); bottom: 10%; left: 10%; animation-delay: -5s; }
+        .fade { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .fade.show { opacity: 1; transform: translateY(0); }
 
-@keyframes orbit {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(50px, -50px) scale(1.1); }
-    66% { transform: translate(-30px, 40px) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-/* Proyectos con Glassmorphism */
-#projects { padding: 100px 10%; }
-.section-title { font-family: 'Anton', sans-serif; font-size: 4rem; margin-bottom: 50px; color: var(--accent-green); }
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-}
-
-.project-card {
-    position: relative;
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px;
-    overflow: hidden;
-    height: 450px;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.project-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    border-color: var(--accent-green);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-}
-
-.project-card img {
-    width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s;
-}
-
-.project-card:hover img { opacity: 1; transform: scale(1.1); }
-
-.project-info {
-    position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9));
-}
-
-/* Contacto tipo "Call to Action" */
-.contact { text-align: center; padding: 150px 10%; }
-.btn-contact {
-    display: inline-block; padding: 20px 50px; border: 2px solid white;
-    border-radius: 50px; font-family: 'Anton', sans-serif; font-size: 2rem;
-    color: white; text-decoration: none; transition: 0.3s;
-}
-.btn-contact:hover { background: white; color: black; transform: scale(1.1); }
-
-/* Animación de entrada */
-.reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 768px) {
-    nav { padding: 20px; }
-    .hero h2 { font-size: 5rem; }
-}
-</style>
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .hero h2 { font-size: 4rem; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
+<div class="cursor"></div>
+
+<div class="sketch-element" style="top:10%; right:5%; font-size: 5rem; color: var(--red); transform: rotate(15deg);">★</div>
+<div class="sketch-element" style="bottom:20%; left:2%; font-size: 8rem; color: var(--blue); opacity: 0.3;">PARA MORIR</div>
 
 <nav>
-    <h1>A. TERRABUSI</h1>
+    <h1>Agustina Terrabusi</h1>
     <ul>
-        <li><a href="#projects" class="hover-target">Proyectos</a></li>
-        <li><a href="#about" class="hover-target">Bio</a></li>
-        <li><a href="#contact" class="hover-target">Contacto</a></li>
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#contact">Contacto</a></li>
     </ul>
 </nav>
 
 <section class="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <p class="hero-sub">DISEÑO • ARTE • 3D</p>
-    <h2>AGUSTINA<br>TERRABUSI</h2>
+    <div class="hero-tag">DISEÑADORA DIGITAL / ARTE & TECNOLOGÍA</div>
+    <h2>AGUSTINA<br>TERRABUSI<br>DIGITAL.</h2>
+    <p>
+        Soy diseñadora digital y estudiante de Arte y Diseño Digital, enfocada en la creación de experiencias visuales e interactivas. 
+        Desarrollo proyectos de modelado 3D, animación, videojuegos, diseño web y UX/UI.
+    </p>
+</section>
+
+<section id="about">
+    <h2 class="section-title fade">Sobre Mí</h2>
+    <div class="about-card fade">
+        <p>Me interesa crear proyectos inmersivos donde el arte, la tecnología y el diseño se mezclen para construir experiencias visuales con identidad propia. Trabajo con modelado 3D, motion graphics, videojuegos, fotografía, diseño interactivo y desarrollo web.</p>
+        <div class="skills">
+            <span>Blender</span><span>Unity</span><span>Illustrator</span><span>Photoshop</span>
+            <span>Premiere</span><span>After Effects</span><span>Figma</span><span>HTML</span><span>CSS</span>
+        </div>
+    </div>
 </section>
 
 <section id="projects">
-    <h2 class="section-title reveal">PROYECTOS</h2>
+    <h2 class="section-title fade">Proyectos</h2>
     <div class="projects-grid">
-        <div class="project-card reveal hover-target">
+        <div class="project-card fade">
             <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200" alt="3D">
-            <div class="project-info">
-                <h3>Modelado 3D</h3>
-                <p>Blender & Octane</p>
-            </div>
+            <div class="project-content"><h3>Modelado 3D</h3></div>
         </div>
-        <div class="project-card reveal hover-target">
+        <div class="project-card fade">
             <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200" alt="Games">
-            <div class="project-info">
-                <h3>Videojuegos</h3>
-                <p>Unity Engine</p>
-            </div>
+            <div class="project-content"><h3>Desarrollo De Videojuegos</h3></div>
         </div>
+        <div class="project-card fade">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200" alt="Arte">
+            <div class="project-content"><h3>Arte</h3></div>
         </div>
+        <div class="project-card fade">
+            <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=1200" alt="Foto">
+            <div class="project-content"><h3>Fotografía</h3></div>
+        </div>
+    </div>
 </section>
 
-<section id="contact" class="contact">
-    <h2 class="reveal">¿TIENES UNA IDEA?</h2>
-    <a href="mailto:agustinaterrabusi15@gmail.com" class="btn-contact reveal hover-target">HABLEMOS</a>
+<section id="contact">
+    <h2 class="section-title fade">Trabajemos Juntos</h2>
+    <div class="contact-box fade">
+        <a class="contact-item" href="mailto:agustinaterrabusi15@gmail.com">✉️ agustinaterrabusi15@gmail.com</a>
+        <a class="contact-item" href="https://wa.me/543489355620" target="_blank">📱 3489355620</a>
+        <a class="contact-item" href="https://www.linkedin.com/in/agustinaterrabusi15" target="_blank">🔗 LinkedIn</a>
+    </div>
 </section>
 
 <script>
-    // Custom Cursor Logic
-    const dot = document.querySelector('.cursor-dot');
-    const outline = document.querySelector('.cursor-outline');
-    const hoverTargets = document.querySelectorAll('.hover-target');
-
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        dot.style.left = `${posX}px`;
-        dot.style.top = `${posY}px`;
-
-        outline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
+    // Cursor dinámico
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
 
-    hoverTargets.forEach(target => {
-        target.addEventListener('mouseenter', () => {
-            outline.style.transform = 'scale(2)';
-            outline.style.background = 'rgba(183, 255, 0, 0.2)';
-        });
-        target.addEventListener('mouseleave', () => {
-            outline.style.transform = 'scale(1)';
-            outline.style.background = 'transparent';
-        });
-    });
-
-    // Scroll Reveal
-    const observer = new IntersectionObserver((entries) => {
+    // Scroll Reveal animado
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+            if(entry.isIntersecting) entry.target.classList.add('show');
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 </script>
 
 </body>
