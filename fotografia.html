@@ -103,6 +103,27 @@
             transform: translateY(0);
         }
 
+        /* Botón Behance */
+        .behance-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #0057ff;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 3px solid var(--black);
+            box-shadow: 6px 6px 0px var(--black);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .behance-btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 10px 10px 0px var(--red);
+        }
+
         .tag-container { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
         .tag {
             background: var(--black); color: white;
@@ -128,27 +149,27 @@
         <p class="project-description">
             Este proyecto surge de una exploración personal sobre la ciudad de Buenos Aires y sus momentos de vacío. Me interesó retratar lugares que forman parte de la rutina y que normalmente están llenos de movimiento, pero capturados en horarios donde la presencia humana desaparece casi por completo.
             <br><br>
-            A través de esta serie busqué transmitir una sensación de soledad, melancolía e introspección, transformando espacios cotidianos en escenarios más silenciosos y contemplativos. Toda la edición fue trabajada en <b>Adobe Photoshop</b> con una estética en blanco y negro uniforme.
+            A través de esta serie busqué transmitir una sensación de soledad, melancolía e introspección, transformando espacios cotidianos en escenarios más silenciosos y contemplativos.
         </p>
     </div>
 
-    <a href="https://heyzine.com/flip-book/d0544b1d86.html" target="_blank" class="book-cover-link">
+    <a href="https://heyzine.com/flip-book/6e8bbc7a6d.html" target="_blank" class="book-cover-link">
         <img src="image_909d55.png" alt="Portada del Libro Buenos Aires">
         <div class="overlay-text">Haz clic para abrir el libro interactivo ↗</div>
     </a>
 
-    <div style="margin-top: 50px;" class="section-box">
-        <h3>Proceso Editorial</h3>
-        <p class="project-description">
-            La entrega final fue desarrollada integrando las fotografías dentro de una experiencia visual inmersiva. Busqué que el paso de cada página genere un ritmo visual coherente, permitiendo al espectador sumergirse en la obra a su propio tiempo.
-        </p>
+    <div style="text-align: center; margin-top: 40px;">
+        <p style="font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">¿Quieres ver más de mi trabajo fotográfico?</p>
+        <a href="https://www.behance.net/agustinaterrabusi15" target="_blank" class="behance-btn">
+            Ver en Behance
+        </a>
     </div>
 
-    <div class="tag-container">
+    <div class="tag-container" style="margin-top: 50px;">
         <div class="tag">Fotografía Digital</div>
         <div class="tag">Adobe Photoshop</div>
         <div class="tag">Diseño Editorial</div>
-        <div class="tag">Hype / Heyzine</div>
+        <div class="tag">Heyzine</div>
     </div>
 </article>
 
