@@ -14,7 +14,10 @@
             --black: #111111;
             --white: #ffffff;
             --green: #b7ff00;
-            --strokes-blue: #003366;
+            /* Nuevos colores inspirados en Basquiat */
+            --basquiat-turquoise: #00cccc;
+            --basquiat-yellow: #ffff00;
+            --basquiat-red: #e63946;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
@@ -28,7 +31,7 @@
         }
 
         .cursor {
-            width: 15px; height: 15px; background: var(--red); border-radius: 50%;
+            width: 15px; height: 15px; background: var(--basquiat-red); border-radius: 50%;
             position: fixed; pointer-events: none; z-index: 10000; border: 2px solid var(--black);
         }
 
@@ -43,7 +46,7 @@
             100% { transform: translate(0, 0) rotate(360deg); }
         }
 
-        /* --- HERO (ESTILO DISCO) --- */
+        /* --- HERO --- */
         header {
             height: 90vh; display: flex; align-items: center; 
             justify-content: space-between; padding: 0 10%;
@@ -70,35 +73,22 @@
         }
 
         .profile-img-large {
-            width: 420px; height: 550px;
-            object-fit: cover; border: 6px solid var(--black);
-            box-shadow: 25px 25px 0 var(--blue);
-            transform: rotate(-2deg);
+            width: 400px; height: 500px;
+            object-fit: cover; border: 5px solid var(--black);
+            box-shadow: 20px 20px 0 var(--basquiat-turquoise);
+            transform: rotate(3deg);
         }
 
-        /* --- SOBRE MÍ CON MISCELÁNEA --- */
-        #sobre-mi { 
-            padding: 100px 10%; 
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 40px;
-            background: var(--white); 
-            border-top: 5px solid var(--black); 
-        }
-        .about-header { font-size: 4rem; text-transform: uppercase; margin-bottom: 30px; background: var(--black); color: white; display: inline-block; padding: 0 15px; }
-        .about-content { font-size: 1.3rem; line-height: 1.6; font-weight: 500; }
+        /* --- SOBRE MÍ (ESTÉTICA BASQUIAT) --- */
+        #sobre-mi { padding: 100px 10%; background: var(--basquiat-turquoise); border-top: 5px solid var(--black); position: relative; }
+        #sobre-mi h2.about-header { font-size: 4rem; text-transform: uppercase; margin-bottom: 30px; background: var(--black); color: white; display: inline-block; padding: 0 15px; }
+        .about-content { font-size: 1.3rem; line-height: 1.6; max-width: 900px; font-weight: 500; position: relative; z-index: 2; }
         .about-content p { margin-bottom: 20px; }
-
         .about-misc {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            border: 4px solid var(--black); background: var(--yellow);
-            position: relative; height: 100%; box-shadow: 10px 10px 0 var(--black);
+            position: absolute; top: 10%; right: 5%; font-size: 8rem; color: var(--basquiat-yellow); transform: rotate(-15deg); opacity: 0.7; z-index: 1; pointer-events: none;
         }
-        .about-misc::after { content: '➔'; font-size: 8rem; transform: rotate(90deg); position: absolute; top: -40px; }
-        .about-misc span { font-size: 5rem; animation: spin 8s infinite linear; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* --- PROYECTOS (ESTÉTICA DISCO STROKES) --- */
+        /* --- PROYECTOS (FILA ÚNICA, IMÁGENES BASQUIAT) --- */
         #proyectos { padding: 100px 5%; background: var(--black); color: white; }
         #proyectos h2 { font-size: 3rem; text-transform: uppercase; margin-bottom: 50px; text-align: center; }
         
@@ -107,40 +97,30 @@
         }
 
         .project-card {
-            background-color: var(--strokes-blue);
-            /* Gradiente granulado inspirado en Is This It */
-            background-image: radial-gradient(circle at center, #ffff00 1px, transparent 1px), 
-                              linear-gradient(135deg, var(--strokes-blue) 0%, #000 100%);
-            background-size: 20px 20px, 100% 100%;
-            border: 3px solid var(--white);
-            height: 450px; text-decoration: none; color: var(--white);
+            background: var(--white); border: 3px solid var(--white);
+            height: 400px; text-decoration: none; color: var(--black);
             display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 25px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden;
+            padding: 20px; transition: 0.4s; position: relative; overflow: hidden;
+            background-size: cover; background-position: center;
         }
+        .project-card:hover { transform: translateY(-15px); }
+        .project-card h3 { font-size: 1.8rem; text-transform: uppercase; z-index: 2; line-height: 1; padding: 5px; background: rgba(255,255,255,0.7); }
 
-        /* Overlay de color al pasar el mouse */
-        .project-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4); z-index: 1; transition: 0.3s;
-        }
+        /* Asignación de imágenes Basquiat por proyecto */
+        .card-3d { background-image: url('3d_project.jpg'); }
+        .card-games { background-image: url('game_project.jpg'); }
+        .card-art { background-image: url('art_project.jpg'); }
+        .card-photo { background-image: url('photo_project.jpg'); }
+        .card-web { background-image: url('web_project.jpg'); }
 
-        .project-card:hover::before { background: transparent; }
+        .card-3d:hover h3 { background-color: var(--basquiat-turquoise); color: white; }
+        .card-games:hover h3 { background-color: var(--basquiat-yellow); color: black; }
+        .card-art:hover h3 { background-color: var(--basquiat-red); color: white; }
+        .card-photo:hover h3 { background-color: var(--black); color: white; }
+        .card-web:hover h3 { background-color: #0057ff; color: white; }
 
-        .project-card h3 { 
-            font-size: 2rem; text-transform: uppercase; z-index: 2; 
-            line-height: 0.9; letter-spacing: -1px;
-            background: var(--black); padding: 5px; display: inline-block;
-        }
-
-        .card-3d:hover { background-color: var(--blue); }
-        .card-games:hover { background-color: var(--green); color: var(--black); }
-        .card-art:hover { background-color: var(--yellow); color: var(--black); }
-        .card-photo:hover { background-color: var(--red); }
-        .card-web:hover { background-color: #ffffff; color: var(--black); }
-
-        /* --- CONTACTO --- */
-        #contacto { padding: 100px 10%; text-align: center; background: var(--green); border-top: 8px solid var(--black); }
+        /* --- CONTACTO (NUEVO COLOR DE FONDO) --- */
+        #contacto { padding: 100px 10%; text-align: center; background: var(--basquiat-yellow); border-top: 8px solid var(--black); }
         .contact-box { background: var(--white); border: 5px solid var(--black); padding: 50px; box-shadow: 20px 20px 0 var(--black); display: inline-block; }
         .social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
         .social-btn { text-decoration: none; color: white; background: var(--black); padding: 15px 25px; font-weight: 700; text-transform: uppercase; border: 3px solid var(--black); transition: 0.3s; }
@@ -152,14 +132,14 @@
 
     <div class="cursor"></div>
 
-    <div class="floating-shape" style="top: 10%; left: 5%; font-size: 5rem; color: var(--red);">✿</div>
-    <div class="floating-shape" style="top: 20%; right: 45%; font-size: 4rem; color: var(--blue);">➔</div>
-    <div class="floating-shape" style="top: 60%; left: 85%; font-size: 6rem; color: var(--black);">★</div>
-    <div class="floating-shape" style="top: 85%; left: 5%; font-size: 5rem; color: var(--green);">✿</div>
+    <div class="floating-shape" style="top: 10%; left: 5%; font-size: 5rem; color: var(--basquiat-red);">✿</div>
+    <div class="floating-shape" style="top: 20%; right: 45%; font-size: 4rem; color: var(--basquiat-turquoise);">➔</div>
+    <div class="floating-shape" style="top: 60%; left: 80%; font-size: 6rem; color: var(--black);">★</div>
+    <div class="floating-shape" style="top: 80%; left: 10%; font-size: 5rem; color: var(--basquiat-yellow);">✿</div>
 
     <header>
         <div class="hero-text">
-            <p style="font-weight: 700; text-transform: uppercase; margin-bottom: 10px; color: var(--blue);">Multimedia Designer & Artist</p>
+            <p style="font-weight: 700; text-transform: uppercase; margin-bottom: 10px; color: var(--basquiat-red);">Multimedia Designer & Artist</p>
             <h1 class="main-title">Agustina<br>Terrabusi</h1>
         </div>
         <div class="hero-photo-container">
@@ -168,24 +148,19 @@
     </header>
 
     <section id="sobre-mi">
-        <div>
-            <h2 class="about-header">Sobre Mí</h2>
-            <div class="about-content">
-                <p>Soy diseñadora digital y estudiante de Arte y Diseño Digital, con interés en la creación de experiencias visuales e interactivas. Trabajo en proyectos de modelado 3D, animación, desarrollo de videojuegos, fotografía y diseño web, explorando distintas herramientas y formas de comunicación visual.</p>
-                <p>Además, tengo conocimientos en HTML y desarrollo de páginas web, junto con experiencia en gestión de redes sociales, marketing y comunicación digital. Esto me permitió desarrollar una mirada tanto creativa como estratégica a la hora de trabajar en proyectos y contenido visual.</p>
-                <p>Me considero una persona creativa, curiosa y con muchas ganas de seguir aprendiendo y creciendo profesionalmente.</p>
-            </div>
-        </div>
-        <div class="about-misc">
-            <span>★</span>
-            <p style="font-weight: 900; text-transform: uppercase; margin-top: 20px;">Creativa</p>
+        <div class="about-misc">✿</div>
+        <h2 class="about-header">Sobre Mí</h2>
+        <div class="about-content">
+            <p>Soy diseñadora digital y estudiante de Arte y Diseño Digital, con interés en la creación de experiencias visuales e interactivas. Trabajo en proyectos de modelado 3D, animación, desarrollo de videojuegos, fotografía y diseño web, explorando distintas herramientas y formas de comunicación visual.</p>
+            <p>Además, tengo conocimientos en HTML y desarrollo de páginas web, junto con experiencia en gestión de redes sociales, marketing y comunicación digital. Esto me permitió desarrollar una mirada tanto creativa como estratégica a la hora de trabajar en proyectos y contenido visual.</p>
+            <p>Me considero una persona creativa, curiosa y con muchas ganas de seguir aprendiendo y creciendo profesionalmente. Disfruto trabajar en equipo, aportar ideas y enfrentar nuevos desafíos que me permitan seguir desarrollando mi perfil dentro del mundo del diseño digital.</p>
         </div>
     </section>
 
     <section id="proyectos">
         <h2>Portafolio</h2>
         <div class="projects-row">
-            <a href="proyectos-3d.html" class="project-card card-3d"><h3>Modelado 3D</h3></a>
+            <a href="3d.html" class="project-card card-3d"><h3>Modelado 3D</h3></a>
             <a href="videojuegos.html" class="project-card card-games"><h3>Videojuegos</h3></a>
             <a href="arte.html" class="project-card card-art"><h3>Arte Visual</h3></a>
             <a href="fotografia.html" class="project-card card-photo"><h3>Fotografía</h3></a>
@@ -197,7 +172,7 @@
         <div class="contact-box">
             <h2 style="font-size: 3rem; text-transform: uppercase; margin-bottom: 10px;">¿Hablamos?</h2>
             <div class="social-links">
-                <a href="mailto:agustinaterrabusi15@gmail.com" class="social-btn" style="background: var(--red);">Email</a>
+                <a href="mailto:agustinaterrabusi15@gmail.com" class="social-btn" style="background: var(--basquiat-red);">Email</a>
                 <a href="https://www.linkedin.com/in/agustinaterrabusi15" target="_blank" class="social-btn" style="background: var(--blue);">LinkedIn</a>
                 <a href="https://www.behance.net/agustinterrabu" target="_blank" class="social-btn" style="background: #0057ff;">Behance</a>
                 <a href="https://wa.me/543489355620" target="_blank" class="social-btn" style="background: #25D366;">WhatsApp</a>
@@ -214,8 +189,8 @@
 
         document.addEventListener('mousemove', (e) => {
             const shapes = document.querySelectorAll('.floating-shape');
-            const x = (window.innerWidth - e.pageX * 2) / 100;
-            const y = (window.innerHeight - e.pageY * 2) / 100;
+            const x = (window.innerWidth - e.pageX * 2) / 90;
+            const y = (window.innerHeight - e.pageY * 2) / 90;
             shapes.forEach(shape => {
                 shape.style.transform = `translateX(${x}px) translateY(${y}px)`;
             });
