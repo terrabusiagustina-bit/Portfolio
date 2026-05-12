@@ -61,16 +61,16 @@
 
         .project-description {
             font-size: 1.15rem; line-height: 1.8; margin-bottom: 30px; max-width: 850px;
+            white-space: pre-line; /* Para respetar los saltos de línea del texto */
         }
 
-        /* Contenedor del Libro Digital */
         .book-container {
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            padding-bottom: 56.25%; 
             border: 4px solid var(--black);
-            background: #333;
+            background: #222;
             box-shadow: 10px 10px 0px var(--black);
             margin: 40px 0;
         }
@@ -86,10 +86,11 @@
         .external-btn {
             display: inline-block;
             margin-top: 10px;
-            text-decoration: underline;
+            text-decoration: none;
             color: var(--black);
             font-weight: 700;
-            font-size: 0.9rem;
+            border-bottom: 2px solid var(--red);
+            padding-bottom: 2px;
         }
 
         .tag-container { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -107,7 +108,7 @@
 
 <header>
     <h1>Fotografía</h1>
-    <p style="margin-bottom: 40px; font-weight: 500; color: var(--red);">Captura de momentos, texturas y luz.</p>
+    <p style="margin-bottom: 40px; font-weight: 500; color: var(--red);">Buenos Aires: Silencio y Contemplación.</p>
 </header>
 
 <article class="project-detail">
@@ -117,10 +118,9 @@
         <p class="project-description">
             Este proyecto surge de una exploración personal sobre la ciudad de Buenos Aires y sus momentos de vacío. Me interesó retratar lugares que forman parte de la rutina y que normalmente están llenos de movimiento, pero capturados en horarios donde la presencia humana desaparece casi por completo.
 
-A través de esta serie busqué transmitir una sensación de soledad, melancolía e introspección, transformando espacios cotidianos en escenarios más silenciosos y contemplativos. Para reforzar esa atmósfera, trabajé toda la edición en Photoshop utilizando una estética en blanco y negro uniforme, priorizando las luces, sombras y texturas de cada imagen.
+            A través de esta serie busqué transmitir una sensación de soledad, melancolía e introspección, transformando espacios cotidianos en escenarios más silenciosos y contemplativos. Para reforzar esa atmósfera, trabajé toda la edición en Photoshop utilizando una estética en blanco y negro uniforme, priorizando las luces, sombras y texturas de cada imagen.
 
-La entrega final fue desarrollada digitalmente en Hype, integrando las fotografías dentro de una experiencia visual más inmersiva.
-
+            La entrega final fue desarrollada digitalmente integrando las fotografías dentro de una experiencia visual inmersiva.
         </p>
     </div>
 
@@ -128,7 +128,7 @@ La entrega final fue desarrollada digitalmente en Hype, integrando las fotograf�
         <iframe src="https://heyzine.com/flip-book/d0544b1d86.html" frameborder="0" allowfullscreen allow="fullscreen"></iframe>
     </div>
     
-    <a href="https://heyzine.com/flip-book/6e8bbc7a6d.html" target="_blank" class="external-btn">Ver en pantalla completa ↗</a>
+    <a href="https://heyzine.com/flip-book/d0544b1d86.html" target="_blank" class="external-btn">Abrir libro en pestaña nueva ↗</a>
 
     <div style="margin-top: 50px;" class="section-box">
         <h3>Proceso Editorial</h3>
@@ -139,7 +139,7 @@ La entrega final fue desarrollada digitalmente en Hype, integrando las fotograf�
 
     <div class="tag-container">
         <div class="tag">Fotografía Digital</div>
-         <div class="tag">Photoshop</div>
+        <div class="tag">Adobe Photoshop</div>
         <div class="tag">Diseño Editorial</div>
         <div class="tag">Heyzine</div>
     </div>
