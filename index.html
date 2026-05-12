@@ -25,13 +25,13 @@
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
         }
 
-        /* Cursor Custom */
+        /* Cursor */
         .cursor {
             width: 12px; height: 12px; background: var(--red); border-radius: 50%;
             position: fixed; pointer-events: none; z-index: 10000; transition: transform 0.1s ease;
         }
 
-        /* Destellos/Brillitos */
+        /* Animación Brillitos */
         .sparkle {
             position: absolute; pointer-events: none;
             background: var(--yellow); width: 6px; height: 6px; border-radius: 50%;
@@ -48,7 +48,7 @@
             z-index: 1000; background: rgba(240, 237, 228, 0.9); backdrop-filter: blur(10px);
             border-bottom: 2px solid var(--black);
         }
-        nav h1 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; position: relative; cursor: pointer; }
+        nav h1 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; position: relative; }
         nav ul { display: flex; gap: 30px; list-style: none; }
         nav a { text-decoration: none; color: var(--black); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
 
@@ -66,7 +66,7 @@
         
         .hero-img {
             width: 100%; aspect-ratio: 1/1; border: 4px solid var(--black);
-            box-shadow: 20px 20px 0px var(--blue); overflow: hidden; position: relative;
+            box-shadow: 20px 20px 0px var(--blue); overflow: hidden;
         }
         .hero-img img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -79,6 +79,7 @@
         .section-title { font-size: 3rem; text-transform: uppercase; margin-bottom: 30px; border-left: 10px solid var(--red); padding-left: 20px; }
         .bio-text { font-size: 1.15rem; line-height: 1.8; max-width: 900px; font-weight: 400; }
         
+        /* SKILLS RECUPERADAS */
         .skills-container { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; }
         .skill-tag {
             background: var(--white); border: 2px solid var(--black);
@@ -87,7 +88,7 @@
         }
         .skill-tag:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--yellow); background: var(--yellow); }
 
-        /* PROYECTOS */
+        /* PROYECTOS - Links actualizados */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .project-link { text-decoration: none; color: inherit; }
         .project-card {
@@ -114,8 +115,6 @@
         @media (max-width: 900px) {
             .hero { grid-template-columns: 1fr; padding-top: 120px; text-align: center; }
             .hero-img { width: 80%; margin: 0 auto; order: -1; }
-            .section-title { font-size: 2.2rem; }
-            nav { padding: 20px 5%; }
             nav ul { display: none; }
         }
     </style>
@@ -126,13 +125,12 @@
 
 <div class="misc" style="top:20%; left:3%; font-size: 4rem; color: var(--blue);">✕</div>
 <div class="misc" style="bottom:15%; right:5%; font-size: 6rem; color: var(--yellow);">✺</div>
-<div class="misc" style="top:50%; right:2%; font-size: 3rem; color: var(--red);">○</div>
 
 <nav>
     <h1 id="nav-name">Agustina Terrabusi</h1>
     <ul>
         <li><a href="#about">Sobre mí</a></li>
-        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#projects">Portfolio</a></li>
         <li><a href="#contact">Contacto</a></li>
     </ul>
 </nav>
@@ -142,7 +140,7 @@
         <span class="hero-tag fade">Diseñadora Digital / Arte & Tecnología</span>
         <h2 class="fade">AGUSTINA<br>TERRABUSI</h2>
         <p class="fade" style="font-weight: 500; font-size: 1.2rem; border-left: 6px solid var(--yellow); padding-left: 20px; max-width: 500px;">
-            Creando experiencias visuales donde el diseño y la tecnología se encuentran.
+            Experiencias visuales e interactivas.
         </p>
     </div>
     <div class="hero-img fade">
@@ -188,27 +186,33 @@
             </div>
         </a>
 
-        <div class="project-card fade">
-            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600">
-            <h3>Videojuegos</h3>
-        </div>
+        <a href="videojuegos.html" class="project-link fade">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600">
+                <h3>Videojuegos <span>→</span></h3>
+            </div>
+        </a>
 
-        <div class="project-card fade">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=600">
-            <h3>Arte</h3>
-        </div>
+        <a href="arte.html" class="project-link fade">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=600">
+                <h3>Arte <span>→</span></h3>
+            </div>
+        </a>
 
-        <div class="project-card fade">
-            <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=600">
-            <h3>Fotografía</h3>
-        </div>
+        <a href="fotografia.html" class="project-link fade">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=600">
+                <h3>Fotografía <span>→</span></h3>
+            </div>
+        </a>
     </div>
 </section>
 
 <section id="contact">
-    <h2 class="section-title fade">Trabajemos Juntos</h2>
+    <h2 class="section-title fade">Contacto</h2>
     <div class="contact-grid fade">
-        <a class="btn-contact" href="mailto:agustinaterrabusi15@gmail.com">✉️ Enviar Email</a>
+        <a class="btn-contact" href="mailto:agustinaterrabusi15@gmail.com">✉️ Email</a>
         <a class="btn-contact" href="https://wa.me/543489355620" target="_blank">📱 WhatsApp</a>
         <a class="btn-contact" href="https://www.linkedin.com/in/agustinaterrabusi15" target="_blank">🔗 LinkedIn</a>
     </div>
@@ -218,13 +222,11 @@
     const cursor = document.querySelector('.cursor');
     const navName = document.getElementById('nav-name');
 
-    // Movimiento del cursor
     document.addEventListener('mousemove', e => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
 
-    // Efecto Brillitos al pasar el mouse por el nombre
     navName.addEventListener('mousemove', (e) => {
         const sparkle = document.createElement('div');
         sparkle.classList.add('sparkle');
@@ -234,7 +236,6 @@
         setTimeout(() => sparkle.remove(), 600);
     });
 
-    // Scroll Reveal (Aparecer al scrollear)
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if(entry.isIntersecting) entry.target.classList.add('show');
