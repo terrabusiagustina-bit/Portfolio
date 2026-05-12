@@ -14,6 +14,7 @@
             --black: #111111;
             --white: #ffffff;
             --green: #b7ff00;
+            --strokes-blue: #003366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
@@ -42,7 +43,7 @@
             100% { transform: translate(0, 0) rotate(360deg); }
         }
 
-        /* --- HERO (NOMBRE IZQ, FOTO DER) --- */
+        /* --- HERO (ESTILO DISCO) --- */
         header {
             height: 90vh; display: flex; align-items: center; 
             justify-content: space-between; padding: 0 10%;
@@ -69,19 +70,35 @@
         }
 
         .profile-img-large {
-            width: 400px; height: 500px; /* Tamaño grande */
-            object-fit: cover; border: 5px solid var(--black);
-            box-shadow: 20px 20px 0 var(--blue);
-            transform: rotate(3deg);
+            width: 420px; height: 550px;
+            object-fit: cover; border: 6px solid var(--black);
+            box-shadow: 25px 25px 0 var(--blue);
+            transform: rotate(-2deg);
         }
 
-        /* --- SOBRE MÍ (TEXTO COMPLETO) --- */
-        #sobre-mi { padding: 100px 10%; background: var(--white); border-top: 5px solid var(--black); }
+        /* --- SOBRE MÍ CON MISCELÁNEA --- */
+        #sobre-mi { 
+            padding: 100px 10%; 
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            background: var(--white); 
+            border-top: 5px solid var(--black); 
+        }
         .about-header { font-size: 4rem; text-transform: uppercase; margin-bottom: 30px; background: var(--black); color: white; display: inline-block; padding: 0 15px; }
-        .about-content { font-size: 1.3rem; line-height: 1.6; max-width: 900px; font-weight: 500; }
+        .about-content { font-size: 1.3rem; line-height: 1.6; font-weight: 500; }
         .about-content p { margin-bottom: 20px; }
 
-        /* --- PROYECTOS (FILA ÚNICA) --- */
+        .about-misc {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border: 4px solid var(--black); background: var(--yellow);
+            position: relative; height: 100%; box-shadow: 10px 10px 0 var(--black);
+        }
+        .about-misc::after { content: '➔'; font-size: 8rem; transform: rotate(90deg); position: absolute; top: -40px; }
+        .about-misc span { font-size: 5rem; animation: spin 8s infinite linear; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* --- PROYECTOS (ESTÉTICA DISCO STROKES) --- */
         #proyectos { padding: 100px 5%; background: var(--black); color: white; }
         #proyectos h2 { font-size: 3rem; text-transform: uppercase; margin-bottom: 50px; text-align: center; }
         
@@ -90,22 +107,40 @@
         }
 
         .project-card {
-            background: var(--white); border: 3px solid var(--white);
-            height: 400px; text-decoration: none; color: var(--black);
+            background-color: var(--strokes-blue);
+            /* Gradiente granulado inspirado en Is This It */
+            background-image: radial-gradient(circle at center, #ffff00 1px, transparent 1px), 
+                              linear-gradient(135deg, var(--strokes-blue) 0%, #000 100%);
+            background-size: 20px 20px, 100% 100%;
+            border: 3px solid var(--white);
+            height: 450px; text-decoration: none; color: var(--white);
             display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 20px; transition: 0.4s; position: relative; overflow: hidden;
+            padding: 25px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
         }
-        .project-card:hover { transform: translateY(-15px); }
-        .project-card h3 { font-size: 1.8rem; text-transform: uppercase; z-index: 2; line-height: 1; }
 
-        .card-3d:hover { background: var(--blue); }
-        .card-games:hover { background: var(--green); }
-        .card-art:hover { background: var(--yellow); }
-        .card-photo:hover { background: var(--red); }
-        .card-web:hover { background: #0057ff; color: white; }
+        /* Overlay de color al pasar el mouse */
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); z-index: 1; transition: 0.3s;
+        }
+
+        .project-card:hover::before { background: transparent; }
+
+        .project-card h3 { 
+            font-size: 2rem; text-transform: uppercase; z-index: 2; 
+            line-height: 0.9; letter-spacing: -1px;
+            background: var(--black); padding: 5px; display: inline-block;
+        }
+
+        .card-3d:hover { background-color: var(--blue); }
+        .card-games:hover { background-color: var(--green); color: var(--black); }
+        .card-art:hover { background-color: var(--yellow); color: var(--black); }
+        .card-photo:hover { background-color: var(--red); }
+        .card-web:hover { background-color: #ffffff; color: var(--black); }
 
         /* --- CONTACTO --- */
-        #contacto { padding: 100px 10%; text-align: center; background: var(--yellow); border-top: 8px solid var(--black); }
+        #contacto { padding: 100px 10%; text-align: center; background: var(--green); border-top: 8px solid var(--black); }
         .contact-box { background: var(--white); border: 5px solid var(--black); padding: 50px; box-shadow: 20px 20px 0 var(--black); display: inline-block; }
         .social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
         .social-btn { text-decoration: none; color: white; background: var(--black); padding: 15px 25px; font-weight: 700; text-transform: uppercase; border: 3px solid var(--black); transition: 0.3s; }
@@ -119,12 +154,12 @@
 
     <div class="floating-shape" style="top: 10%; left: 5%; font-size: 5rem; color: var(--red);">✿</div>
     <div class="floating-shape" style="top: 20%; right: 45%; font-size: 4rem; color: var(--blue);">➔</div>
-    <div class="floating-shape" style="top: 60%; left: 80%; font-size: 6rem; color: var(--black);">★</div>
-    <div class="floating-shape" style="top: 80%; left: 10%; font-size: 5rem; color: var(--green);">✿</div>
+    <div class="floating-shape" style="top: 60%; left: 85%; font-size: 6rem; color: var(--black);">★</div>
+    <div class="floating-shape" style="top: 85%; left: 5%; font-size: 5rem; color: var(--green);">✿</div>
 
     <header>
         <div class="hero-text">
-            <p style="font-weight: 700; text-transform: uppercase; margin-bottom: 10px;">Multimedia Designer & Artist</p>
+            <p style="font-weight: 700; text-transform: uppercase; margin-bottom: 10px; color: var(--blue);">Multimedia Designer & Artist</p>
             <h1 class="main-title">Agustina<br>Terrabusi</h1>
         </div>
         <div class="hero-photo-container">
@@ -133,18 +168,24 @@
     </header>
 
     <section id="sobre-mi">
-        <h2 class="about-header">Sobre Mí</h2>
-        <div class="about-content">
-            <p>Soy diseñadora digital y estudiante de Arte y Diseño Digital, con interés en la creación de experiencias visuales e interactivas. Trabajo en proyectos de modelado 3D, animación, desarrollo de videojuegos, fotografía y diseño web, explorando distintas herramientas y formas de comunicación visual.</p>
-            <p>Además, tengo conocimientos en HTML y desarrollo de páginas web, junto con experiencia en gestión de redes sociales, marketing y comunicación digital. Esto me permitió desarrollar una mirada tanto creativa como estratégica a la hora de trabajar en proyectos y contenido visual.</p>
-            <p>Me considero una persona creativa, curiosa y con muchas ganas de seguir aprendiendo y creciendo profesionalmente. Disfruto trabajar en equipo, aportar ideas y enfrentar nuevos desafíos que me permitan seguir desarrollando mi perfil dentro del mundo del diseño digital.</p>
+        <div>
+            <h2 class="about-header">Sobre Mí</h2>
+            <div class="about-content">
+                <p>Soy diseñadora digital y estudiante de Arte y Diseño Digital, con interés en la creación de experiencias visuales e interactivas. Trabajo en proyectos de modelado 3D, animación, desarrollo de videojuegos, fotografía y diseño web, explorando distintas herramientas y formas de comunicación visual.</p>
+                <p>Además, tengo conocimientos en HTML y desarrollo de páginas web, junto con experiencia en gestión de redes sociales, marketing y comunicación digital. Esto me permitió desarrollar una mirada tanto creativa como estratégica a la hora de trabajar en proyectos y contenido visual.</p>
+                <p>Me considero una persona creativa, curiosa y con muchas ganas de seguir aprendiendo y creciendo profesionalmente.</p>
+            </div>
+        </div>
+        <div class="about-misc">
+            <span>★</span>
+            <p style="font-weight: 900; text-transform: uppercase; margin-top: 20px;">Creativa</p>
         </div>
     </section>
 
     <section id="proyectos">
         <h2>Portafolio</h2>
         <div class="projects-row">
-            <a href="proyectos-3d.html" class="project-card card-3d"><h3>Modelado 3D</h3></a>
+            <a href="3d.html" class="project-card card-3d"><h3>Modelado 3D</h3></a>
             <a href="videojuegos.html" class="project-card card-games"><h3>Videojuegos</h3></a>
             <a href="arte.html" class="project-card card-art"><h3>Arte Visual</h3></a>
             <a href="fotografia.html" class="project-card card-photo"><h3>Fotografía</h3></a>
@@ -173,8 +214,8 @@
 
         document.addEventListener('mousemove', (e) => {
             const shapes = document.querySelectorAll('.floating-shape');
-            const x = (window.innerWidth - e.pageX * 2) / 90;
-            const y = (window.innerHeight - e.pageY * 2) / 90;
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
             shapes.forEach(shape => {
                 shape.style.transform = `translateX(${x}px) translateY(${y}px)`;
             });
