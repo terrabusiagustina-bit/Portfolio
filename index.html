@@ -7,109 +7,118 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta extraída de la imagen de Basquiat */
-            --bg-canvas: #e8e2d2; /* Crema sucio de fondo */
+            --bg-canvas: #f0ede4;
             --blue: #0099cc;
             --yellow: #ffcc00;
             --red: #e63946;
             --black: #111111;
-            --text-main: #111;
+            --white: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
         body {
             font-family: 'Space Grotesk', sans-serif;
             background-color: var(--bg-canvas);
-            color: var(--text-main);
+            color: var(--black);
             overflow-x: hidden;
-            /* Textura de lienzo de fondo */
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
         }
 
-        /* Elementos flotantes tipo Basquiat */
-        .sketch-element {
-            position: fixed; pointer-events: none; z-index: -1; opacity: 0.6;
+        /* Cursor */
+        .cursor {
+            width: 12px; height: 12px; background: var(--red); border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 10000; transition: transform 0.1s ease;
         }
 
-        /* Cursor interactivo */
-        .cursor {
-            width: 20px; height: 20px; border: 2px solid var(--black); border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease;
+        /* Misceláneas Animadas de fondo */
+        .misc {
+            position: fixed; pointer-events: none; z-index: -1; font-weight: bold;
+            user-select: none; opacity: 0.4; animation: float 10s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, -20px) rotate(10deg); }
         }
 
         nav {
-            position: fixed; width: 100%; top: 0; padding: 25px 50px;
+            position: fixed; width: 100%; top: 0; padding: 25px 10%;
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; mix-blend-mode: multiply;
+            z-index: 1000; background: rgba(240, 237, 228, 0.8); backdrop-filter: blur(5px);
         }
-        nav h1 { font-size: 1.2rem; font-weight: 700; letter-spacing: -1px; text-transform: uppercase; }
+        nav h1 { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
         nav ul { display: flex; gap: 30px; list-style: none; }
-        nav a { text-decoration: none; color: var(--black); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; border-bottom: 2px solid transparent; transition: 0.3s; }
-        nav a:hover { border-bottom: 2px solid var(--red); }
+        nav a { text-decoration: none; color: var(--black); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
 
         .hero {
-            min-height: 100vh; padding: 150px 10%;
+            height: 100vh; padding: 0 10%;
             display: flex; flex-direction: column; justify-content: center;
+            position: relative;
         }
-        .hero-tag { color: var(--blue); font-weight: 700; margin-bottom: 10px; letter-spacing: 2px; }
         .hero h2 {
-            font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9;
-            text-transform: uppercase; font-weight: 700; letter-spacing: -4px;
+            font-size: clamp(3.5rem, 12vw, 9rem); line-height: 0.85;
+            text-transform: uppercase; font-weight: 700; letter-spacing: -3px;
         }
-        .hero p { max-width: 600px; margin-top: 30px; font-size: 1.1rem; line-height: 1.6; }
+        .hero-tag { color: var(--blue); font-weight: 700; letter-spacing: 4px; margin-bottom: 10px; }
 
-        section { padding: 100px 10%; position: relative; }
+        /* Sección Sobre Mí con FOTO */
+        .about-container {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center;
+        }
+        .about-photo {
+            position: relative; border: 3px solid var(--black);
+            height: 500px; background: #ddd; overflow: hidden;
+            box-shadow: 15px 15px 0px var(--yellow);
+        }
+        .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Efecto garabato sobre foto */
+        .about-photo::after {
+            content: 'AGUSTINA'; position: absolute; bottom: 10px; right: -20px;
+            font-size: 4rem; font-weight: 900; color: rgba(230, 57, 70, 0.3);
+            transform: rotate(-90deg); pointer-events: none;
+        }
+
         .section-title {
-            font-size: 4rem; text-transform: uppercase; font-weight: 700;
-            margin-bottom: 40px; position: relative; display: inline-block;
+            font-size: clamp(2rem, 5vw, 4rem); text-transform: uppercase;
+            margin-bottom: 40px; display: inline-block; position: relative;
         }
-        /* Subrayado tipo trazo de pincel */
-        .section-title::after {
-            content: ''; position: absolute; bottom: 5px; left: 0; width: 100%;
-            height: 15px; background: var(--yellow); z-index: -1; transform: rotate(-1deg);
+        .section-title::before {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 110%;
+            height: 12px; background: var(--blue); z-index: -1; transform: rotate(-1deg); opacity: 0.5;
         }
 
-        .about-card {
-            background: white; border: 3px solid var(--black);
-            padding: 40px; position: relative; box-shadow: 10px 10px 0px var(--blue);
-            transition: 0.4s;
-        }
-        .about-card:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px var(--red); }
-
-        .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
-        .skills span {
-            padding: 8px 15px; border: 1px solid var(--black);
-            font-weight: 500; font-size: 0.8rem; transition: 0.3s;
-        }
-        .skills span:hover { background: var(--black); color: white; }
-
+        /* Proyectos */
         .projects-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
         }
         .project-card {
-            border: 3px solid var(--black); overflow: hidden; background: white;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--white); border: 3px solid var(--black);
+            padding: 15px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
         }
-        .project-card:hover { transform: rotate(1deg) scale(1.02); }
-        .project-card img { width: 100%; height: 300px; object-fit: cover; border-bottom: 3px solid var(--black); }
-        .project-content { padding: 20px; }
+        .project-card:hover { transform: scale(1.03) rotate(-1deg); box-shadow: 10px 10px 0px var(--black); }
+        .project-card img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(100%); transition: 0.3s; }
+        .project-card:hover img { filter: grayscale(0%); }
+        .project-card h3 { margin-top: 15px; font-size: 1.2rem; text-transform: uppercase; }
 
-        .contact-box {
-            display: flex; flex-direction: column; gap: 15px; align-items: flex-start;
-        }
+        /* Contacto */
         .contact-item {
-            font-size: 1.5rem; text-decoration: none; color: var(--black);
-            font-weight: 700; border-bottom: 4px solid var(--blue); transition: 0.3s;
+            display: block; font-size: clamp(1.2rem, 4vw, 2.5rem);
+            text-decoration: none; color: var(--black); font-weight: 700;
+            margin-bottom: 10px; transition: 0.3s;
         }
-        .contact-item:hover { border-bottom-color: var(--yellow); padding-left: 10px; }
+        .contact-item:hover { color: var(--red); transform: translateX(20px); }
 
-        .fade { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .fade { opacity: 0; transform: translateY(40px); transition: 1s ease-out; }
         .fade.show { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 768px) {
-            nav { padding: 20px; }
-            .hero h2 { font-size: 4rem; }
+        section { padding: 100px 10%; }
+
+        @media (max-width: 900px) {
+            .about-container { grid-template-columns: 1fr; }
+            .about-photo { height: 400px; }
+            nav ul { display: none; }
         }
     </style>
 </head>
@@ -117,8 +126,10 @@
 
 <div class="cursor"></div>
 
-<div class="sketch-element" style="top:10%; right:5%; font-size: 5rem; color: var(--red); transform: rotate(15deg);">★</div>
-<div class="sketch-element" style="bottom:20%; left:2%; font-size: 8rem; color: var(--blue); opacity: 0.3;">PARA MORIR</div>
+<div class="misc" style="top:20%; left:5%; font-size: 3rem; color: var(--blue);">✕</div>
+<div class="misc" style="top:60%; right:10%; font-size: 5rem; color: var(--yellow); animation-delay: 2s;">○</div>
+<div class="misc" style="bottom:10%; left:15%; font-size: 4rem; color: var(--red); animation-delay: 4s;">△</div>
+<div class="misc" style="top:40%; left:80%; font-size: 2rem; color: var(--black);">✺</div>
 
 <nav>
     <h1>Agustina Terrabusi</h1>
@@ -130,21 +141,32 @@
 </nav>
 
 <section class="hero">
-    <div class="hero-tag">DISEÑADORA DIGITAL / ARTE & TECNOLOGÍA</div>
-    <h2>AGUSTINA<br>TERRABUSI<br>DIGITAL.</h2>
-    <p>
-        Soy diseñadora digital y estudiante de Arte y Diseño Digital, enfocada en la creación de experiencias visuales e interactivas. 
-        Desarrollo proyectos de modelado 3D, animación, videojuegos, diseño web y UX/UI.
+    <div class="hero-tag">ARTE & DISEÑO DIGITAL</div>
+    <h2>AGUSTINA<br>TERRABUSI</h2>
+    <p style="max-width: 500px; margin-top: 20px; font-weight: 500;">
+        Explorando la intersección entre el modelado 3D, el desarrollo de videojuegos y el diseño visual interactivo.
     </p>
 </section>
 
 <section id="about">
-    <h2 class="section-title fade">Sobre Mí</h2>
-    <div class="about-card fade">
-        <p>Me interesa crear proyectos inmersivos donde el arte, la tecnología y el diseño se mezclen para construir experiencias visuales con identidad propia. Trabajo con modelado 3D, motion graphics, videojuegos, fotografía, diseño interactivo y desarrollo web.</p>
-        <div class="skills">
-            <span>Blender</span><span>Unity</span><span>Illustrator</span><span>Photoshop</span>
-            <span>Premiere</span><span>After Effects</span><span>Figma</span><span>HTML</span><span>CSS</span>
+    <div class="about-container">
+        <div class="about-photo fade">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200" alt="Agustina Terrabusi">
+        </div>
+        <div class="about-info fade">
+            <h2 class="section-title">Sobre Mí</h2>
+            <p style="line-height: 1.8; font-size: 1.1rem;">
+                Soy diseñadora digital y estudiante de Arte y Diseño Digital. Mi enfoque está en crear proyectos inmersivos donde el arte y la tecnología se mezclen para construir experiencias visuales únicas.
+                <br><br>
+                Tengo experiencia en:
+            </p>
+            <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+                <b style="background: var(--black); color: white; padding: 5px 10px;">Blender</b>
+                <b style="background: var(--black); color: white; padding: 5px 10px;">Unity</b>
+                <b style="background: var(--black); color: white; padding: 5px 10px;">Figma</b>
+                <b style="background: var(--black); color: white; padding: 5px 10px;">After Effects</b>
+                <b style="background: var(--black); color: white; padding: 5px 10px;">HTML/CSS</b>
+            </div>
         </div>
     </div>
 </section>
@@ -153,42 +175,42 @@
     <h2 class="section-title fade">Proyectos</h2>
     <div class="projects-grid">
         <div class="project-card fade">
-            <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200" alt="3D">
-            <div class="project-content"><h3>Modelado 3D</h3></div>
+            <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=600">
+            <h3>Modelado 3D</h3>
         </div>
         <div class="project-card fade">
-            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200" alt="Games">
-            <div class="project-content"><h3>Desarrollo De Videojuegos</h3></div>
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600">
+            <h3>Videojuegos</h3>
         </div>
         <div class="project-card fade">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200" alt="Arte">
-            <div class="project-content"><h3>Arte</h3></div>
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=600">
+            <h3>Arte</h3>
         </div>
         <div class="project-card fade">
-            <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=1200" alt="Foto">
-            <div class="project-content"><h3>Fotografía</h3></div>
+            <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=600">
+            <h3>Fotografía</h3>
         </div>
     </div>
 </section>
 
 <section id="contact">
-    <h2 class="section-title fade">Trabajemos Juntos</h2>
-    <div class="contact-box fade">
-        <a class="contact-item" href="mailto:agustinaterrabusi15@gmail.com">✉️ agustinaterrabusi15@gmail.com</a>
-        <a class="contact-item" href="https://wa.me/543489355620" target="_blank">📱 3489355620</a>
-        <a class="contact-item" href="https://www.linkedin.com/in/agustinaterrabusi15" target="_blank">🔗 LinkedIn</a>
+    <h2 class="section-title fade">Contacto</h2>
+    <div class="fade">
+        <a class="contact-item" href="mailto:agustinaterrabusi15@gmail.com">agustinaterrabusi15@gmail.com</a>
+        <a class="contact-item" href="https://wa.me/543489355620" target="_blank">WhatsApp: 3489355620</a>
+        <a class="contact-item" href="https://www.linkedin.com/in/agustinaterrabusi15" target="_blank">LinkedIn</a>
     </div>
 </section>
 
 <script>
-    // Cursor dinámico
+    // Cursor custom
     const cursor = document.querySelector('.cursor');
     document.addEventListener('mousemove', e => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
 
-    // Scroll Reveal animado
+    // Scroll reveal
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if(entry.isIntersecting) entry.target.classList.add('show');
