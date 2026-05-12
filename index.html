@@ -34,24 +34,25 @@
             position: fixed; pointer-events: none; z-index: 10000; border: 2px solid var(--black);
         }
 
-        /* --- ELEMENTOS DE FONDO --- */
+        /* --- ELEMENTOS DE FONDO (MÁS CANTIDAD Y VARIEDAD) --- */
         .floating-shape {
-            position: absolute; z-index: -1; opacity: 0.5; pointer-events: none;
-            animation: float 12s infinite linear;
+            position: absolute; z-index: -1; opacity: 0.6; pointer-events: none;
+            animation: float 10s infinite ease-in-out;
         }
         @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(60px, 120px) rotate(180deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(10deg); }
+            66% { transform: translate(-20px, 40px) rotate(-10deg); }
         }
 
         /* --- HERO --- */
         header {
             height: 90vh; display: flex; align-items: center; 
             justify-content: space-between; padding: 0 10%;
+            position: relative;
         }
 
-        .hero-text { flex: 1; text-align: left; }
+        .hero-text { flex: 1; text-align: left; z-index: 2; }
         
         .main-title {
             font-size: clamp(3rem, 10vw, 7.5rem);
@@ -68,7 +69,7 @@
         @keyframes shine { to { background-position: 200% center; } }
 
         .hero-photo-container {
-            flex: 1; display: flex; justify-content: flex-end;
+            flex: 1; display: flex; justify-content: flex-end; position: relative;
         }
 
         .profile-img-large {
@@ -76,47 +77,70 @@
             object-fit: cover; border: 5px solid var(--black);
             box-shadow: 20px 20px 0 var(--basquiat-turquoise);
             transform: rotate(3deg);
+            z-index: 2;
         }
 
-        /* --- SOBRE MÍ --- */
-        #sobre-mi { padding: 100px 10%; background: var(--basquiat-turquoise); border-top: 5px solid var(--black); position: relative; }
-        #sobre-mi h2.about-header { font-size: 4rem; text-transform: uppercase; margin-bottom: 30px; background: var(--black); color: white; display: inline-block; padding: 0 15px; }
-        .about-content { font-size: 1.3rem; line-height: 1.6; max-width: 900px; font-weight: 500; position: relative; z-index: 2; }
-        .about-content p { margin-bottom: 20px; }
-        .about-misc { position: absolute; top: 10%; right: 5%; font-size: 8rem; color: var(--basquiat-yellow); transform: rotate(-15deg); opacity: 0.7; z-index: 1; pointer-events: none; }
+        /* --- SOBRE MÍ CON POST-IT --- */
+        #sobre-mi { 
+            padding: 120px 10%; 
+            background: var(--basquiat-turquoise); 
+            border-top: 5px solid var(--black); 
+            position: relative; 
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
 
-        /* --- PROYECTOS (BOTONES SIN FOTOS) --- */
+        .about-text-container { flex: 2; }
+
+        #sobre-mi h2.about-header { 
+            font-size: 4rem; text-transform: uppercase; margin-bottom: 30px; 
+            background: var(--black); color: white; display: inline-block; padding: 0 15px; 
+        }
+
+        .about-content { font-size: 1.3rem; line-height: 1.6; font-weight: 500; }
+        .about-content p { margin-bottom: 20px; }
+
+        /* EL POST-IT */
+        .post-it {
+            flex: 1;
+            background: var(--basquiat-yellow);
+            border: 3px solid var(--black);
+            padding: 30px;
+            transform: rotate(-5deg);
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            margin-top: 50px;
+        }
+        .post-it::before {
+            content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            width: 100px; height: 30px; background: rgba(255,255,255,0.5); /* Cinta scotch */
+        }
+        .post-it h3 { font-size: 3rem; text-transform: uppercase; margin-bottom: 10px; }
+        .post-it .flower-icon { font-size: 3rem; display: block; animation: spin 5s infinite linear; }
+        
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* --- PROYECTOS --- */
         #proyectos { padding: 100px 5%; background: var(--black); color: white; text-align: center; }
         #proyectos h2 { font-size: 3rem; text-transform: uppercase; margin-bottom: 50px; }
         
         .projects-row {
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 20px; max-width: 1200px; margin: 0 auto;
         }
 
         .project-btn {
-            background: var(--white);
-            border: 4px solid var(--black);
-            padding: 40px 20px;
-            text-decoration: none;
-            color: var(--black);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 8px 8px 0px var(--white);
-            min-height: 200px;
+            background: var(--white); border: 4px solid var(--black); padding: 40px 20px;
+            text-decoration: none; color: var(--black); font-weight: 700;
+            text-transform: uppercase; font-size: 1.5rem; display: flex;
+            align-items: center; justify-content: center; transition: 0.3s;
+            box-shadow: 8px 8px 0px var(--white); min-height: 180px;
         }
 
-        /* Colores de Hover específicos */
-        .btn-3d:hover { background: var(--basquiat-turquoise); color: white; transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
+        .btn-3d:hover { background: var(--basquiat-turquoise); transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
         .btn-games:hover { background: var(--basquiat-yellow); transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
         .btn-art:hover { background: var(--basquiat-red); color: white; transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
         .btn-photo:hover { background: var(--blue); color: white; transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
@@ -135,10 +159,14 @@
 
     <div class="cursor"></div>
 
-    <div class="floating-shape" style="top: 10%; left: 5%; font-size: 5rem; color: var(--basquiat-red);">✿</div>
-    <div class="floating-shape" style="top: 20%; right: 45%; font-size: 4rem; color: var(--basquiat-turquoise);">➔</div>
-    <div class="floating-shape" style="top: 60%; left: 80%; font-size: 6rem; color: var(--black);">★</div>
-    <div class="floating-shape" style="top: 80%; left: 10%; font-size: 5rem; color: var(--basquiat-yellow);">✿</div>
+    <div class="floating-shape" style="top: 5%; left: 5%; font-size: 6rem; color: var(--basquiat-red);">✿</div>
+    <div class="floating-shape" style="top: 15%; left: 25%; font-size: 4rem; color: var(--black);">👑</div>
+    <div class="floating-shape" style="top: 40%; left: 10%; font-size: 5rem; color: var(--blue);">➔</div>
+    <div class="floating-shape" style="top: 10%; right: 10%; font-size: 7rem; color: var(--basquiat-turquoise);">★</div>
+    <div class="floating-shape" style="top: 30%; right: 25%; font-size: 4rem; color: var(--basquiat-red);">✘</div>
+    <div class="floating-shape" style="top: 60%; left: 5%; font-size: 5rem; color: var(--black);">👑</div>
+    <div class="floating-shape" style="top: 70%; right: 15%; font-size: 6rem; color: var(--basquiat-yellow);">✿</div>
+    <div class="floating-shape" style="top: 85%; left: 40%; font-size: 4rem; color: var(--blue);">➔</div>
 
     <header>
         <div class="hero-text">
@@ -151,12 +179,18 @@
     </header>
 
     <section id="sobre-mi">
-        <div class="about-misc">✿</div>
-        <h2 class="about-header">Sobre Mí</h2>
-        <div class="about-content">
-            <p>Soy diseñadora digital y estudiante de Arte y Diseño Digital, con interés en la creación de experiencias visuales e interactivas. Trabajo en proyectos de modelado 3D, animación, desarrollo de videojuegos, fotografía y diseño web, explorando distintas herramientas y formas de comunicación visual.</p>
-            <p>Además, tengo conocimientos en HTML y desarrollo de páginas web, junto con experiencia en gestión de redes sociales, marketing y comunicación digital. Esto me permitió desarrollar una mirada tanto creativa como estratégica a la hora de trabajar en proyectos y contenido visual.</p>
-            <p>Me considero una persona creativa, curiosa y con muchas ganas de seguir aprendiendo y creciendo profesionalmente. Disfruto trabajar en equipo, aportar ideas y enfrentar nuevos desafíos que me permitan seguir desarrollando mi perfil dentro del mundo del diseño digital.</p>
+        <div class="about-text-container">
+            <h2 class="about-header">Sobre Mí</h2>
+            <div class="about-content">
+                <p>Soy diseñadora digital y estudiante de Arte y Diseño Digital, con interés en la creación de experiencias visuales e interactivas. Trabajo en proyectos de modelado 3D, animación, desarrollo de videojuegos, fotografía y diseño web.</p>
+                <p>Además, tengo conocimientos en HTML y desarrollo de páginas web, junto con experiencia en gestión de redes sociales, marketing y comunicación digital.</p>
+                <p>Disfruto trabajar en equipo, aportar ideas y enfrentar nuevos desafíos que me permitan seguir desarrollando mi perfil dentro del mundo del diseño digital.</p>
+            </div>
+        </div>
+        
+        <div class="post-it">
+            <h3>Hola!</h3>
+            <span class="flower-icon">✿</span>
         </div>
     </section>
 
@@ -190,10 +224,11 @@
             cursor.style.top = e.clientY + 'px';
         });
 
+        // Efecto Parallax para que los elementos floten con el mouse
         document.addEventListener('mousemove', (e) => {
             const shapes = document.querySelectorAll('.floating-shape');
-            const x = (window.innerWidth - e.pageX * 2) / 90;
-            const y = (window.innerHeight - e.pageY * 2) / 90;
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
             shapes.forEach(shape => {
                 shape.style.transform = `translateX(${x}px) translateY(${y}px)`;
             });
