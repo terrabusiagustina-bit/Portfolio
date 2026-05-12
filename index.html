@@ -14,7 +14,6 @@
             --black: #111111;
             --white: #ffffff;
             --green: #b7ff00;
-            /* Nuevos colores inspirados en Basquiat */
             --basquiat-turquoise: #00cccc;
             --basquiat-yellow: #ffff00;
             --basquiat-red: #e63946;
@@ -79,47 +78,51 @@
             transform: rotate(3deg);
         }
 
-        /* --- SOBRE MÍ (ESTÉTICA BASQUIAT) --- */
+        /* --- SOBRE MÍ --- */
         #sobre-mi { padding: 100px 10%; background: var(--basquiat-turquoise); border-top: 5px solid var(--black); position: relative; }
         #sobre-mi h2.about-header { font-size: 4rem; text-transform: uppercase; margin-bottom: 30px; background: var(--black); color: white; display: inline-block; padding: 0 15px; }
         .about-content { font-size: 1.3rem; line-height: 1.6; max-width: 900px; font-weight: 500; position: relative; z-index: 2; }
         .about-content p { margin-bottom: 20px; }
-        .about-misc {
-            position: absolute; top: 10%; right: 5%; font-size: 8rem; color: var(--basquiat-yellow); transform: rotate(-15deg); opacity: 0.7; z-index: 1; pointer-events: none;
-        }
+        .about-misc { position: absolute; top: 10%; right: 5%; font-size: 8rem; color: var(--basquiat-yellow); transform: rotate(-15deg); opacity: 0.7; z-index: 1; pointer-events: none; }
 
-        /* --- PROYECTOS (FILA ÚNICA, IMÁGENES BASQUIAT) --- */
-        #proyectos { padding: 100px 5%; background: var(--black); color: white; }
-        #proyectos h2 { font-size: 3rem; text-transform: uppercase; margin-bottom: 50px; text-align: center; }
+        /* --- PROYECTOS (BOTONES SIN FOTOS) --- */
+        #proyectos { padding: 100px 5%; background: var(--black); color: white; text-align: center; }
+        #proyectos h2 { font-size: 3rem; text-transform: uppercase; margin-bottom: 50px; }
         
         .projects-row {
-            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .project-card {
-            background: var(--white); border: 3px solid var(--white);
-            height: 400px; text-decoration: none; color: var(--black);
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 20px; transition: 0.4s; position: relative; overflow: hidden;
-            background-size: cover; background-position: center;
+        .project-btn {
+            background: var(--white);
+            border: 4px solid var(--black);
+            padding: 40px 20px;
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 8px 8px 0px var(--white);
+            min-height: 200px;
         }
-        .project-card:hover { transform: translateY(-15px); }
-        .project-card h3 { font-size: 1.8rem; text-transform: uppercase; z-index: 2; line-height: 1; padding: 5px; background: rgba(255,255,255,0.7); }
 
-        /* Asignación de imágenes Basquiat por proyecto */
-        .card-3d { background-image: url('3d_project.jpg'); }
-        .card-games { background-image: url('game_project.jpg'); }
-        .card-art { background-image: url('art_project.jpg'); }
-        .card-photo { background-image: url('photo_project.jpg'); }
-        .card-web { background-image: url('web_project.jpg'); }
+        /* Colores de Hover específicos */
+        .btn-3d:hover { background: var(--basquiat-turquoise); color: white; transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
+        .btn-games:hover { background: var(--basquiat-yellow); transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
+        .btn-art:hover { background: var(--basquiat-red); color: white; transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
+        .btn-photo:hover { background: var(--blue); color: white; transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
+        .btn-web:hover { background: var(--green); transform: translate(-10px, -10px); box-shadow: 15px 15px 0px var(--white); }
 
-        .card-3d:hover h3 { background-color: var(--basquiat-turquoise); color: white; }
-        .card-games:hover h3 { background-color: var(--basquiat-yellow); color: black; }
-        .card-art:hover h3 { background-color: var(--basquiat-red); color: white; }
-        .card-photo:hover h3 { background-color: var(--black); color: white; }
-        .card-web:hover h3 { background-color: #0057ff; color: white; }
-
-        /* --- CONTACTO (NUEVO COLOR DE FONDO) --- */
+        /* --- CONTACTO --- */
         #contacto { padding: 100px 10%; text-align: center; background: var(--basquiat-yellow); border-top: 8px solid var(--black); }
         .contact-box { background: var(--white); border: 5px solid var(--black); padding: 50px; box-shadow: 20px 20px 0 var(--black); display: inline-block; }
         .social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
@@ -160,11 +163,11 @@
     <section id="proyectos">
         <h2>Portafolio</h2>
         <div class="projects-row">
-            <a href="proyectos-3d.html" class="project-card card-3d"><h3>Modelado 3D</h3></a>
-            <a href="videojuegos.html" class="project-card card-games"><h3>Videojuegos</h3></a>
-            <a href="arte.html" class="project-card card-art"><h3>Arte Visual</h3></a>
-            <a href="fotografia.html" class="project-card card-photo"><h3>Fotografía</h3></a>
-            <a href="web.html" class="project-card card-web"><h3>Diseño Web</h3></a>
+            <a href="3d.html" class="project-btn btn-3d">Modelado 3D</a>
+            <a href="videojuegos.html" class="project-btn btn-games">Videojuegos</a>
+            <a href="arte.html" class="project-btn btn-art">Arte Visual</a>
+            <a href="fotografia.html" class="project-btn btn-photo">Fotografía</a>
+            <a href="web.html" class="project-btn btn-web">Diseño Web</a>
         </div>
     </section>
 
