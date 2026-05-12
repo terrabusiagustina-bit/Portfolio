@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diseño Web — Agustina Terrabusi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-canvas: #f0ede4;
+            --blue: #0099cc;
+            --yellow: #ffcc00;
+            --red: #e63946;
+            --black: #111111;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--black);
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            padding: 50px 10%;
+        }
+
+        .cursor {
+            width: 12px; height: 12px; background: var(--blue); border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 10000; border: 1px solid var(--white);
+        }
+
+        .back-link {
+            text-decoration: none; color: var(--black); font-weight: 700;
+            text-transform: uppercase; border: 2px solid var(--black);
+            padding: 10px 20px; display: inline-block; margin-bottom: 40px;
+            transition: 0.3s; background: var(--white);
+        }
+        .back-link:hover { background: var(--blue); color: white; transform: translateX(-5px); }
+
+        header h1 {
+            font-size: clamp(3rem, 8vw, 5rem); text-transform: uppercase;
+            line-height: 0.9; margin-bottom: 20px; letter-spacing: -2px;
+        }
+
+        .project-detail {
+            background: var(--white); border: 4px solid var(--black);
+            padding: 40px; margin-bottom: 50px; box-shadow: 15px 15px 0px var(--blue);
+        }
+
+        .project-detail h2 {
+            font-size: 2.2rem; text-transform: uppercase; margin-bottom: 20px;
+            background: var(--blue); color: white; display: inline-block; padding: 5px 15px;
+        }
+
+        .section-box {
+            border-left: 5px solid var(--blue);
+            padding-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        .project-description {
+            font-size: 1.15rem; line-height: 1.8; margin-bottom: 20px; max-width: 900px;
+        }
+
+        /* Mockup / Preview Container */
+        .preview-container {
+            width: 100%;
+            margin: 40px 0;
+            border: 4px solid var(--black);
+            background: #eee;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 10px 10px 0px var(--black);
+        }
+
+        .preview-container img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Botón Behance */
+        .behance-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #0057ff;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 3px solid var(--black);
+            box-shadow: 6px 6px 0px var(--black);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .behance-btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px var(--black);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .step-card {
+            border: 2px solid var(--black);
+            padding: 20px;
+            background: var(--bg-canvas);
+        }
+
+        .step-card h4 {
+            color: var(--blue);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .tag-container { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag {
+            background: var(--black); color: white;
+            padding: 6px 12px; font-size: 0.8rem; text-transform: uppercase; font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cursor"></div>
+
+<a href="index.html" class="back-link">← Volver al inicio</a>
+
+<header>
+    <h1>Diseño Web & UX/UI</h1>
+    <p style="margin-bottom: 40px; font-weight: 500; color: var(--blue);">Interfaz, Navegación y Prototipado.</p>
+</header>
+
+<article class="project-detail">
+    <h2>MealMaster App</h2>
+    
+    <div class="section-box">
+        <p class="project-description">
+            Proyecto enfocado en la mejora de la experiencia del usuario dentro de una aplicación de planificación de comidas. El objetivo principal fue crear una interfaz que simplificara la organización diaria del usuario a través de un diseño claro, dinámico e intuitivo.
+        </p>
+    </div>
+
+    <div class="preview-container">
+        <img src="https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=1200" alt="Mockup MealMaster App">
+    </div>
+
+    <div class="process-steps">
+        <div class="step-card">
+            <h4>01. UX Research</h4>
+            <p>Planificación del recorrido del usuario (User Journey) y organización del contenido para asegurar una navegación fluida.</p>
+        </div>
+        <div class="step-card">
+            <h4>02. UI Design</h4>
+            <p>Desarrollo de la identidad visual y creación de pantallas interactivas con un sistema de diseño coherente.</p>
+        </div>
+        <div class="step-card">
+            <h4>03. Prototipado</h4>
+            <p>Construcción del prototipo interactivo en Figma para testear la funcionalidad y la experiencia final.</p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <p style="font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">¿Quieres ver el caso de estudio completo?</p>
+        <a href="https://www.behance.net/gallery/205768807/MealMaster-App" target="_blank" class="behance-btn">
+            Ver proyecto en Behance
+        </a>
+    </div>
+
+    <div class="tag-container">
+        <div class="tag">Figma</div>
+        <div class="tag">UX / UI</div>
+        <div class="tag">Prototipado</div>
+        <div class="tag">Mobile App Design</div>
+    </div>
+</article>
+
+<script>
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+</script>
+
+</body>
+</html>
