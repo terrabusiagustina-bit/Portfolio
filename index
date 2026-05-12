@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agustina — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family==Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #050505;
+      --text: #f5f5f5;
+      --gray: #8f8f8f;
+      --line: #1f1f1f;
+      --accent: #c4ff00;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: black;
+    }
+
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 50px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,0.3);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav h1 {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 60px 60px;
+      position: relative;
+    }
+
+    .hero small {
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .hero h2 {
+      font-size: clamp(4rem, 11vw, 12rem);
+      line-height: 0.9;
+      font-weight: 700;
+      text-transform: uppercase;
+      max-width: 1200px;
+    }
+
+    .hero p {
+      max-width: 500px;
+      margin-top: 40px;
+      color: var(--gray);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .circle {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: var(--accent);
+      filter: blur(150px);
+      opacity: 0.12;
+      right: -100px;
+      top: 100px;
+      animation: pulse 5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.2);
+      }
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 5rem);
+      text-transform: uppercase;
+      margin-bottom: 60px;
+      line-height: 0.9;
+    }
+
+    section {
+      padding: 100px 60px;
+      border-top: 1px solid var(--line);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      border: 1px solid var(--line);
+      background: #0d0d0d;
+      overflow: hidden;
+      transition: 0.4s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+      filter: grayscale(100%);
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-content small {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.7rem;
+    }
+
+    .project-content h3 {
+      margin-top: 10px;
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      line-height: 1.9;
+      font-size: 1rem;
+    }
+
+    .about-box {
+      height: 500px;
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #111, #000);
+    }
+
+    .about-box::before {
+      content: "DESIGN";
+      position: absolute;
+      font-size: 7rem;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+      font-weight: bold;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .skills span {
+      border: 1px solid var(--line);
+      padding: 12px 20px;
+      color: var(--gray);
+      transition: 0.3s;
+    }
+
+    .skills span:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .contact {
+      text-align: center;
+      padding-bottom: 140px;
+    }
+
+    .contact h2 {
+      font-size: clamp(3rem, 8vw, 8rem);
+      text-transform: uppercase;
+      line-height: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 18px 40px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .contact a:hover {
+      background: var(--accent);
+      color: black;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 60px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--gray);
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 1s;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media(max-width: 900px) {
+      nav {
+        padding: 20px;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+
+      .hero,
+      section,
+      footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .about-box {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>Agustina</h1>
+
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="hero">
+      <div class="circle"></div>
+
+      <small>Graphic Designer / Visual Artist</small>
+
+      <h2>
+        Digital<br>
+        Experiences<br>
+        & Visual<br>
+        Design.
+      </h2>
+
+      <p>
+        Soy diseñadora gráfica enfocada en experiencias visuales experimentales,
+        identidad digital, motion graphics y estética futurista/editorial.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title fade">Selected Projects</h2>
+
+      <div class="projects-grid">
+
+        <article class="project-card fade">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="Project">
+          </div>
+
+          <div class="project-content">
+            <small>Branding</small>
+            <h3>Menta y Limón</h3>
+          </div>
+        </article>
+
+        <article class="project-card fade">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Project">
+          </div>
+
+          <div class="project-content">
+            <small>Digital Art</small>
+            <h3>Out Of Bounds</h3>
+          </div>
+        </article>
+
+        <article class="project-card fade">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop" alt="Project">
+          </div>
+
+          <div class="project-content">
+            <small>Installation</small>
+            <h3>Memoria Espacial</h3>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+
+        <div class="about-text fade">
+          <h2 class="section-title">
+            About
+            Me
+          </h2>
+
+          <p>
+            Soy estudiante de diseño gráfico y me interesa crear proyectos visuales
+            con una estética experimental, mezclando diseño editorial, arte digital,
+            motion graphics y experiencias inmersivas.
+
+            Me inspiran los sistemas futuristas, las interfaces glitch,
+            el cyberpunk y las composiciones tipográficas grandes.
+          </p>
+
+          <div class="skills">
+            <span>Photoshop</span>
+            <span>Illustrator</span>
+            <span>Blender</span>
+            <span>After Effects</span>
+            <span>UI Design</span>
+            <span>Branding</span>
+          </div>
+        </div>
+
+        <div class="about-box fade"></div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="contact fade">
+      <h2>
+        Let's<br>
+        Work<br>
+        Together
+      </h2>
+
+      <p>
+        Contactame para proyectos, colaboraciones o trabajos freelance.
+      </p>
+
+      <a href="mailto:agustina@email.com">
+        Contact Me
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Agustina Portfolio</p>
+    <p>Buenos Aires, Argentina</p>
+  </footer>
+
+  <script>
+    const faders = document.querySelectorAll('.fade');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    faders.forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+      const scroll = window.scrollY;
+      document.querySelector('.circle').style.transform = `translateY(${scroll * 0.2}px)`;
+    });
+  </script>
+
+</body>
+</html>
