@@ -27,15 +27,12 @@ box-sizing:border-box;
 }
 
 body{
-background:
-radial-gradient(circle at top left, rgba(183,255,0,0.25), transparent 25%),
-radial-gradient(circle at bottom right, rgba(68,93,255,0.25), transparent 30%),
-radial-gradient(circle at center, rgba(255,107,44,0.12), transparent 35%),
 font-family:'Space Grotesk',sans-serif;
 background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
 position:relative;
+line-height:1.4;
 }
 
 .texture{
@@ -61,15 +58,22 @@ overflow:hidden;
 .particles span{
 position:absolute;
 display:block;
-width:180px;
-height:180px;
+width:420px;
+height:420px;
 border-radius:50%;
-animation:move 18s ease-in-out infinite;
-opacity:.45;
-filter:blur(60px);
+animation:move 24s ease-in-out infinite;
+opacity:.14;
+filter:blur(120px);
+mix-blend-mode:multiply;
 }
 
-.particles span:nth-child(1){background:var(--blue);top:10%;left:20%;animation-duration:14s;}
+.particles span:nth-child(1){background:#6f7cff;top:-5%;left:60%;animation-duration:22s;}
+.particles span:nth-child(2){background:#d8ff61;top:15%;left:75%;animation-duration:28s;}
+.particles span:nth-child(3){background:#ffb38a;top:65%;left:10%;animation-duration:24s;}
+.particles span:nth-child(4){background:#89d4ff;top:40%;left:40%;animation-duration:30s;}
+.particles span:nth-child(5){background:#ffe27a;top:85%;left:70%;animation-duration:26s;}
+.particles span:nth-child(6){background:#ffc6de;top:70%;left:55%;animation-duration:21s;}
+.particles span:nth-child(7){background:#b8ffcf;top:25%;left:-5%;animation-duration:32s;}
 .particles span:nth-child(2){background:var(--orange);top:40%;left:70%;animation-duration:20s;}
 .particles span:nth-child(3){background:var(--green);top:80%;left:30%;animation-duration:17s;}
 .particles span:nth-child(4){background:var(--yellow);top:60%;left:10%;animation-duration:22s;}
@@ -91,21 +95,11 @@ filter:blur(60px);
 .particles span:nth-child(6){background:var(--orange);top:75%;left:80%;animation-duration:16s;}
 
 @keyframes move{
-0%{
-transform:translate(0px,0px) scale(1);
-}
-25%{
-transform:translate(60px,-40px) scale(1.2);
-}
-50%{
-transform:translate(-40px,50px) scale(1.1);
-}
-75%{
-transform:translate(30px,-20px) scale(1.3);
-}
-100%{
-transform:translate(0px,0px) scale(1);
-}
+0%{transform:translate3d(0,0,0) scale(1);}
+25%{transform:translate3d(80px,-40px,0) scale(1.08);}
+50%{transform:translate3d(-60px,60px,0) scale(1.12);}
+75%{transform:translate3d(40px,20px,0) scale(1.05);}
+100%{transform:translate3d(0,0,0) scale(1);}
 }
 
 .cursor{
@@ -153,30 +147,32 @@ font-weight:500;
 
 .hero{
 min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding:140px 60px 80px;
+display:grid;
+grid-template-columns:1.1fr 0.9fr;
+align-items:center;
+padding:170px 70px 100px;
 position:relative;
+gap:60px;
 }
 
 .hero h2{
 font-family:'Anton', sans-serif;
-letter-spacing:2px;
-font-size:clamp(4rem,11vw,10rem);
-line-height:.88;
+font-size:clamp(5rem,9vw,8.5rem);
+line-height:.9;
 text-transform:uppercase;
-max-width:1200px;
+max-width:780px;
 position:relative;
 z-index:2;
+letter-spacing:1px;
+font-weight:400;
 }
 
 .hero p{
-margin-top:40px;
-max-width:700px;
-line-height:1.8;
+margin-top:38px;
+max-width:560px;
+line-height:1.9;
 font-size:1rem;
-color:var(--soft);
+color:#555;
 position:relative;
 z-index:2;
 }
@@ -191,34 +187,35 @@ color:var(--blue);
 
 .blob{
 position:absolute;
-filter:blur(90px);
+filter:blur(100px);
 border-radius:50%;
-opacity:.6;
-animation:float 6s ease-in-out infinite alternate;
+opacity:.18;
+animation:float 18s ease-in-out infinite alternate;
+mix-blend-mode:multiply;
 }
 
 .blob1{
-width:300px;
-height:300px;
-background:var(--green);
-top:100px;
-right:100px;
+width:420px;
+height:420px;
+background:#d9ff66;
+top:0;
+right:0;
 }
 
 .blob2{
-width:250px;
-height:250px;
-background:var(--orange);
-bottom:100px;
-left:0;
+width:300px;
+height:300px;
+background:#ffb89d;
+bottom:5%;
+left:-5%;
 }
 
 .blob3{
-width:220px;
-height:220px;
-background:var(--blue);
-right:25%;
-top:45%;
+width:260px;
+height:260px;
+background:#aab7ff;
+right:30%;
+top:35%;
 }
 
 @keyframes float{
@@ -245,12 +242,12 @@ text-transform:uppercase;
 content:'';
 position:absolute;
 left:0;
-bottom:-12px;
+bottom:-10px;
 width:100%;
-height:10px;
-background:linear-gradient(90deg,var(--orange),var(--blue),var(--green),var(--yellow));
+height:8px;
+background:linear-gradient(90deg,#ff9f7f,#7280ff,#d2ff61);
 border-radius:100px;
-opacity:.8;
+opacity:.9;
 }
 
 .about{
@@ -261,10 +258,12 @@ align-items:center;
 }
 
 .about-card{
-background:white;
-padding:40px;
-border-radius:35px;
-box-shadow:0 20px 40px rgba(0,0,0,.06);
+background:rgba(255,255,255,0.65);
+backdrop-filter:blur(16px);
+padding:45px;
+border-radius:32px;
+border:1px solid rgba(255,255,255,.4);
+box-shadow:0 10px 40px rgba(0,0,0,.05);
 }
 
 .about-card p{
@@ -325,12 +324,13 @@ gap:35px;
 }
 
 .project-card{
-background:white;
-border-radius:35px;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(12px);
+border-radius:32px;
 overflow:hidden;
-box-shadow:0 20px 40px rgba(0,0,0,.06);
-transition:.4s;
-animation:cardFloat 6s ease-in-out infinite;
+border:1px solid rgba(255,255,255,.5);
+box-shadow:0 10px 35px rgba(0,0,0,.05);
+transition:.45s;
 }
 
 .project-card:nth-child(2){animation-delay:1s;}
@@ -339,12 +339,16 @@ animation:cardFloat 6s ease-in-out infinite;
 
 @keyframes cardFloat{
 0%{transform:translateY(0px);}
+50%{transform:translateY(-4px);}
+100%{transform:translateY(0px);}
+}
 50%{transform:translateY(-12px);}
 100%{transform:translateY(0px);}
 }
 
 .project-card:hover{
-transform:translateY(-15px) scale(1.02);
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(0,0,0,.08);
 }
 
 .project-card img{
@@ -426,6 +430,17 @@ opacity:1;
 transform:translateY(0px);
 }
 
+@media(max-width:1100px){
+.hero{
+grid-template-columns:1fr;
+}
+
+.hero h2{
+font-size:5rem;
+max-width:100%;
+}
+}
+
 @media(max-width:900px){
 nav,section,.hero,footer{
 padding-left:20px;
@@ -482,7 +497,7 @@ display:none;
 Agustina<br>
 Terrabusi<br>
 Diseñadora<br>
-Digital
+Digital.
 </h2>
 
 <p>
@@ -496,9 +511,9 @@ Soy diseñadora digital y estudiante de Arte y Diseño Digital, enfocada en la c
 <div class="about">
 <div class="about-card fade">
 <p>
-Me interesa crear proyectos inmersivos donde el arte, la tecnología y el diseño se mezclen para construir experiencias visuales con identidad propia.
+Me interesa crear proyectos inmersivos donde el arte, la tecnología y el diseño se mezclen para construir experiencias visuales con personalidad propia.
 
-Trabajo con modelado 3D, motion graphics, videojuegos, fotografía, diseño interactivo y desarrollo web, explorando distintas ténicas y estilos.
+Trabajo con modelado 3D, motion graphics, videojuegos, fotografía, diseño interactivo y desarrollo web, explorando estéticas experimentales, futuristas y artísticas.
 </p>
 
 <div class="skills">
@@ -527,28 +542,32 @@ Trabajo con modelado 3D, motion graphics, videojuegos, fotografía, diseño inte
 <div class="project-card fade">
 <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop">
 <div class="project-content">
-<h3>Modelado 3D</h3>
+<small>Modelado 3D</small>
+<h3>Personajes & Escenarios</h3>
 </div>
 </div>
 
 <div class="project-card fade">
 <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
 <div class="project-content">
-<h3>Desarrollo de Videojuegos</h3>
+<small>Desarrollo de Videojuegos</small>
+<h3>Out Of Bounds</h3>
 </div>
 </div>
 
 <div class="project-card fade">
 <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop">
 <div class="project-content">
-<h3>Arte</h3>
+<small>Arte</small>
+<h3>Visuales Experimentales</h3>
 </div>
 </div>
 
 <div class="project-card fade">
 <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=1200&auto=format&fit=crop">
 <div class="project-content">
-<h3>Fotografía</h3>
+<small>Fotografía</small>
+<h3>Composición & Narrativa</h3>
 </div>
 </div>
 
@@ -557,14 +576,15 @@ Trabajo con modelado 3D, motion graphics, videojuegos, fotografía, diseño inte
 
 <section id="contact" class="contact fade">
 <h2>
-Datos de<br>
-Contacto
+Trabajemos<br>
+Juntos
 </h2>
 
 <div class="contact-box">
 <a class="contact-item" href="mailto:agustinaterrabusi15@gmail.com">✉️ agustinaterrabusi15@gmail.com</a>
 <a class="contact-item" href="https://wa.me/543489355620" target="_blank">📱 3489355620</a>
 <a class="contact-item" href="https://www.linkedin.com/in/agustinaterrabusi15" target="_blank">🔗 LinkedIn</a>
+<a class="contact-item" href="https://www.behance.net/agustinterrabu" target="_blank">🎨 Behance</a>
 </div>
 </section>
 
