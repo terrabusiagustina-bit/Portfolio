@@ -60,28 +60,37 @@
         }
 
         .project-description {
-            font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; max-width: 900px;
+            font-size: 1.15rem; line-height: 1.8; margin-bottom: 20px; max-width: 900px;
         }
 
-        /* Botón Behance (Estilo Arte) */
+        /* Contenedor del Botón Behance */
+        .cta-container {
+            text-align: center; 
+            background: var(--bg-canvas); 
+            padding: 40px; 
+            border: 3px solid var(--black); 
+            margin: 40px 0;
+        }
+
         .behance-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             background: #0057ff;
             color: white;
             text-decoration: none;
-            padding: 15px 30px;
+            padding: 20px 40px;
             font-weight: 700;
             text-transform: uppercase;
+            font-size: 1.2rem;
             border: 3px solid var(--black);
-            box-shadow: 6px 6px 0px var(--black);
+            box-shadow: 8px 8px 0px var(--black);
             transition: 0.3s;
-            margin-top: 20px;
         }
         .behance-btn:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 10px 10px 0px var(--yellow);
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--yellow);
+            background: var(--black);
         }
 
         .process-grid {
@@ -94,16 +103,10 @@
             background: var(--bg-canvas);
             padding: 25px;
             border: 2px solid var(--black);
+            transition: 0.3s;
         }
+        .process-card:hover { transform: translateY(-5px); border-color: var(--blue); }
         .process-card h4 { text-transform: uppercase; margin-bottom: 10px; font-size: 0.9rem; color: var(--blue); }
-
-        .video-wrapper {
-            border: 4px solid var(--black);
-            background: #000;
-            margin: 40px 0;
-            box-shadow: 10px 10px 0px var(--black);
-        }
-        video { width: 100%; display: block; }
 
         .tag-container { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
         .tag {
@@ -128,43 +131,38 @@
     
     <div class="section-box">
         <p class="project-description">
-            Un universo ficticio donde animales antropomórficos replican las dinámicas absurdas y caóticas de la oficina humana. A través del humor y la sátira, el proyecto explora el estrés laboral, las reglas sin sentido y las situaciones exageradas de la cotidianeidad profesional.
+            Un universo ficticio donde animales antropomórficos replican las dinámicas absurdas y caóticas de la oficina humana. A través del humor y la sátira, el proyecto explora el estrés laboral y las reglas sin sentido de la cotidianeidad profesional.
         </p>
     </div>
 
     <div class="process-grid">
         <div class="process-card">
             <h4>Preproducción</h4>
-            <p>Construcción narrativa, desarrollo de historia, diseño de personajes y escenarios. Planificación integral incluyendo cronograma y presupuesto.</p>
+            <p>Construcción narrativa, diseño de personajes y escenarios. Planificación integral de cronograma y presupuesto.</p>
         </div>
         <div class="process-card">
             <h4>Producción</h4>
-            <p>Desarrollo del apartado visual mediante ilustración, composición y animación de escenas para dar vida al universo de oficina.</p>
+            <p>Ilustración, composición y animación de escenas para dar vida al universo visual de "Cosas de Humanos".</p>
         </div>
         <div class="process-card">
             <h4>Postproducción</h4>
-            <p>Edición, montaje y ajustes finales de color y ritmo para construir una pieza coherente narrativa y visualmente.</p>
+            <p>Edición, montaje y ajustes finales de color y ritmo para una pieza narrativa coherente.</p>
         </div>
     </div>
 
-    <div class="video-wrapper">
-        <video controls>
-            <source src="cosas-de-humanos-final.mp4" type="video/mp4">
-            Tu navegador no soporta el video.
-        </video>
-    </div>
-
-    <div style="text-align: center; margin: 40px 0;">
-        <p style="font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">¿Quieres ver el desarrollo completo del universo?</p>
+    <div class="cta-container">
+        <p style="font-weight: 700; margin-bottom: 20px; text-transform: uppercase; font-size: 1.2rem;">
+            ¿Quieres ver el video y el proceso completo?
+        </p>
         <a href="https://www.behance.net/gallery/231450877/Cosas-de-Humanos" target="_blank" class="behance-btn">
-            Ver proyecto en Behance
+            Ver Proyecto en Behance ➔
         </a>
     </div>
 
     <div class="tag-container">
         <div class="tag">After Effects</div>
-        <div class="tag">Photoshop</div>
-        <div class="tag">Illustrator</div>
+        <div class="tag">Adobe Photoshop</div>
+        <div class="tag">Adobe Illustrator</div>
         <div class="tag">Premiere Pro</div>
         <div class="tag">Animación 2D</div>
     </div>
