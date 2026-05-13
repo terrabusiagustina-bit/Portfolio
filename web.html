@@ -63,41 +63,34 @@
             font-size: 1.15rem; line-height: 1.8; margin-bottom: 20px; max-width: 900px;
         }
 
-        /* Mockup / Preview Container */
-        .preview-container {
-            width: 100%;
+        /* Contenedor del Botón Behance */
+        .cta-container {
+            text-align: center; 
+            background: var(--bg-canvas); 
+            padding: 40px; 
+            border: 3px solid var(--black); 
             margin: 40px 0;
-            border: 4px solid var(--black);
-            background: #eee;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 10px 10px 0px var(--black);
         }
 
-        .preview-container img {
-            width: 100%;
-            display: block;
-        }
-
-        /* Botón Behance */
         .behance-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             background: #0057ff;
             color: white;
             text-decoration: none;
-            padding: 15px 30px;
+            padding: 20px 40px;
             font-weight: 700;
             text-transform: uppercase;
+            font-size: 1.2rem;
             border: 3px solid var(--black);
-            box-shadow: 6px 6px 0px var(--black);
+            box-shadow: 8px 8px 0px var(--black);
             transition: 0.3s;
-            margin-top: 20px;
         }
         .behance-btn:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 9px 9px 0px var(--black);
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--blue);
+            background: var(--black);
         }
 
         .process-steps {
@@ -111,7 +104,9 @@
             border: 2px solid var(--black);
             padding: 20px;
             background: var(--bg-canvas);
+            transition: 0.3s;
         }
+        .step-card:hover { border-color: var(--blue); transform: translateY(-3px); }
 
         .step-card h4 {
             color: var(--blue);
@@ -143,41 +138,39 @@
     
     <div class="section-box">
         <p class="project-description">
-            Proyecto enfocado en la mejora de la experiencia del usuario dentro de una aplicación de planificación de comidas. El objetivo principal fue crear una interfaz que simplificara la organización diaria del usuario a través de un diseño claro, dinámico e intuitivo.
+            Proyecto enfocado en la mejora de la experiencia del usuario dentro de una aplicación de planificación de comidas. El objetivo fue crear una interfaz que simplificara la organización diaria a través de un diseño claro, dinámico e intuitivo.
         </p>
-    </div>
-
-    <div class="preview-container">
-        <img src="https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=1200" alt="Mockup MealMaster App">
     </div>
 
     <div class="process-steps">
         <div class="step-card">
             <h4>01. UX Research</h4>
-            <p>Planificación del recorrido del usuario (User Journey) y organización del contenido para asegurar una navegación fluida.</p>
+            <p>Planificación del User Journey y organización de arquitectura de información para asegurar fluidez.</p>
         </div>
         <div class="step-card">
             <h4>02. UI Design</h4>
-            <p>Desarrollo de la identidad visual y creación de pantallas interactivas con un sistema de diseño coherente.</p>
+            <p>Desarrollo de la identidad visual y sistema de diseño para pantallas móviles interactivas.</p>
         </div>
         <div class="step-card">
             <h4>03. Prototipado</h4>
-            <p>Construcción del prototipo interactivo en Figma para testear la funcionalidad y la experiencia final.</p>
+            <p>Construcción del prototipo navegable en Figma para validación de flujos y experiencia final.</p>
         </div>
     </div>
 
-    <div style="text-align: center; margin-top: 50px;">
-        <p style="font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">¿Quieres ver el caso de estudio completo?</p>
+    <div class="cta-container">
+        <p style="font-weight: 700; margin-bottom: 20px; text-transform: uppercase; font-size: 1.2rem;">
+            ¿Quieres ver el estudio de caso y prototipo?
+        </p>
         <a href="https://www.behance.net/gallery/205768807/MealMaster-App" target="_blank" class="behance-btn">
-            Ver proyecto en Behance
+            Ver Proyecto en Behance ➔
         </a>
     </div>
 
     <div class="tag-container">
         <div class="tag">Figma</div>
         <div class="tag">UX / UI</div>
-        <div class="tag">Prototipado</div>
-        <div class="tag">Mobile App Design</div>
+        <div class="tag">Prototipado Interactivo</div>
+        <div class="tag">Mobile Design</div>
     </div>
 </article>
 
