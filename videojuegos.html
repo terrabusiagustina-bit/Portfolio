@@ -75,21 +75,23 @@
         .behance-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             background: #0057ff;
             color: white;
             text-decoration: none;
-            padding: 15px 30px;
+            padding: 20px 40px;
             font-weight: 700;
             text-transform: uppercase;
+            font-size: 1.2rem;
             border: 3px solid var(--black);
-            box-shadow: 6px 6px 0px var(--black);
+            box-shadow: 8px 8px 0px var(--black);
             transition: 0.3s;
-            margin: 20px 0;
+            margin: 30px 0;
         }
         .behance-btn:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 10px 10px 0px var(--green);
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--green);
+            background: var(--black);
         }
 
         .highlight-card {
@@ -98,20 +100,6 @@
             padding: 25px;
             margin: 20px 0;
         }
-
-        .art-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .art-item {
-            border: 3px solid var(--black);
-            width: 100%;
-            transition: 0.3s;
-        }
-        .art-item:hover { transform: translateY(-5px); box-shadow: 8px 8px 0px var(--blue); }
 
         .tag-container { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
         .tag {
@@ -137,14 +125,16 @@
     <div class="section-box">
         <h3>Concepto y Narrativa</h3>
         <p class="project-description">
-            <b>"Soul"</b> es un videojuego de plataformas 2D que sigue la historia de un pequeño ser luminoso llamado <b>Umbra</b>. La propuesta no es solo mecánica, sino emocional: es una metáfora sobre el autoconocimiento y la superación de obstáculos internos. A lo largo de 10 niveles, el jugador descubre los misterios de su propio viaje mientras esquiva trampas y enfrenta enemigos que intentan apagar su luz.
+            <b>"Soul"</b> es un videojuego de plataformas 2D que sigue la historia de un pequeño ser luminoso llamado <b>Umbra</b>. La propuesta no es solo mecánica, sino emocional: es una metáfora sobre el autoconocimiento y la superación de obstáculos internos.
         </p>
     </div>
 
-    <div style="text-align: center; margin: 20px 0;">
-        <p style="font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">¿Quieres ver el GDD y el proceso completo?</p>
+    <div style="text-align: center; background: var(--bg-canvas); padding: 40px; border: 3px solid var(--black); margin-bottom: 40px;">
+        <p style="font-weight: 700; margin-bottom: 15px; text-transform: uppercase; font-size: 1.2rem;">
+            Ver GDD, Assets y Gameplay Completo
+        </p>
         <a href="https://www.behance.net/gallery/231338731/Soul-proyecto-VideoJuego" target="_blank" class="behance-btn">
-            Ver proyecto en Behance
+            Abrir Proyecto en Behance ➔
         </a>
     </div>
 
@@ -152,34 +142,24 @@
         <h3>Proceso Creativo & Diseño</h3>
         <p class="project-description">
             Mi enfoque principal fue lograr una <b>cohesión audiovisual</b>. Diseñé una curva de aprendizaje donde el crecimiento de Umbra se refleja en sus habilidades: desde lo más básico como saltar, hasta dominar dashes verticales y rebotes en paredes.
-            <br><br>
-            Cada dos niveles, el entorno cambia no solo en dificultad, sino en atmósfera sonora, incorporando pistas musicales únicas que acompañan el tono emocional del personaje en ese punto de su evolución.
         </p>
     </div>
 
     <div class="highlight-card">
         <h3>Atmósfera Inmersiva</h3>
-        <p class="project-description" style="font-size: 1rem;">
-            El diseño sonoro fue clave: desarrollé efectos específicos para cada interacción (el colapso de plataformas temporales, el sonido del dash, el impacto al ser herido). La interfaz fue pensada para ser minimalista y funcional, permitiendo que el foco siempre sea la experiencia visual del <i>Tilemap</i> y los sprites.
+        <p class="project-description" style="font-size: 1rem; margin-bottom: 0;">
+            El diseño sonoro fue clave: desarrollé efectos específicos para cada interacción (el colapso de plataformas temporales, el sonido del dash). La interfaz fue pensada para ser minimalista, permitiendo que el foco siempre sea la experiencia visual.
         </p>
     </div>
 
-    <div class="section-box" style="border-color: var(--yellow);">
-        <h3>Galería de Assets & Gameplay</h3>
-        <div class="art-grid">
-            <img src="umbra-sprites.jpg" alt="Sprites de Umbra" class="art-item">
-            <img src="enemigos-design.jpg" alt="Diseño de Enemigos" class="art-item">
-            <img src="level-design-soul.jpg" alt="Diseño de Niveles" class="art-item">
-        </div>
-    </div>
-
-    <div class="section-box" style="border-color: var(--blue);">
+    <div class="section-box" style="border-color: var(--blue); margin-top: 40px;">
         <h3>Tecnologías y Herramientas</h3>
         <div class="tag-container">
-            <div class="tag">Unity (Motor Principal)</div>
-            <div class="tag">Visual Studio (C# Scripting)</div>
-            <div class="tag">Photoshop / Aseprite (Asset Design)</div>
-            <div class="tag">Audacity (Sound Design)</div>
+            <div class="tag">Unity (C#)</div>
+            <div class="tag">Visual Studio</div>
+            <div class="tag">Aseprite</div>
+            <div class="tag">Adobe Photoshop</div>
+            <div class="tag">Audacity</div>
         </div>
     </div>
 </article>
