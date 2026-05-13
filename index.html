@@ -19,6 +19,7 @@
             --basquiat-red: #e63946;
         }
 
+        /* Quitamos el cursor por defecto */
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
         body {
@@ -29,9 +30,19 @@
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
         }
 
+        /* --- NUEVO CURSOR FLORCITA --- */
         .cursor {
-            width: 15px; height: 15px; background: var(--basquiat-red); border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 10000; border: 2px solid var(--black);
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            font-size: 24px; /* Tamaño de la flor */
+            color: var(--basquiat-red);
+            line-height: 1;
+            /* Centramos la flor respecto al punto del mouse */
+            transform: translate(-50%, -50%);
+            user-select: none;
+            text-shadow: 1px 1px 0px var(--black); /* Borde sutil para que no se pierda */
+            transition: transform 0.1s ease-out;
         }
 
         /* --- ELEMENTOS DE FONDO --- */
@@ -155,7 +166,7 @@
 </head>
 <body>
 
-    <div class="cursor"></div>
+    <div class="cursor">✿</div>
 
     <div class="floating-shape" style="top: 5%; left: 5%; font-size: 6rem; color: var(--basquiat-red);">✿</div>
     <div class="floating-shape" style="top: 40%; left: 10%; font-size: 5rem; color: var(--blue);">➔</div>
@@ -222,6 +233,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
+        // Efecto de movimiento en las formas de fondo
         document.addEventListener('mousemove', (e) => {
             const shapes = document.querySelectorAll('.floating-shape');
             const x = (window.innerWidth - e.pageX * 2) / 100;
