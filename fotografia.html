@@ -27,7 +27,7 @@
 
         .cursor {
             width: 12px; height: 12px; background: var(--red); border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 10000;
+            position: fixed; pointer-events: none; z-index: 10000; border: 1px solid var(--black);
         }
 
         .back-link {
@@ -63,42 +63,35 @@
             font-size: 1.15rem; line-height: 1.8; margin-bottom: 30px; max-width: 850px;
         }
 
-        /* Contenedor de la Portada */
-        .book-preview {
-            width: 100%;
-            max-width: 600px;
-            margin: 40px auto;
-            border: 4px solid var(--black);
-            box-shadow: 10px 10px 0px var(--black);
+        /* Contenedor del Botón */
+        .cta-container {
+            text-align: center; 
+            background: var(--bg-canvas); 
+            padding: 60px 20px; 
+            border: 3px solid var(--black); 
+            margin: 40px 0;
         }
 
-        .book-preview img {
-            width: 100%;
-            display: block;
-        }
-
-        /* BOTÓN ESTILO BEHANCE */
         .btn-heyzine {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            background: #0057ff; /* Color característico de Behance */
+            gap: 15px;
+            background: var(--black);
             color: white;
             text-decoration: none;
-            padding: 18px 35px;
+            padding: 20px 40px;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 1rem;
+            font-size: 1.2rem;
             border: 3px solid var(--black);
-            box-shadow: 6px 6px 0px var(--black);
+            box-shadow: 8px 8px 0px var(--red);
             transition: 0.3s;
-            margin-top: 20px;
         }
 
         .btn-heyzine:hover {
             transform: translate(-4px, -4px);
-            box-shadow: 12px 12px 0px var(--red);
-            background: #0046cc;
+            box-shadow: 12px 12px 0px var(--black);
+            background: var(--red);
         }
 
         .tag-container { margin-top: 50px; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -128,16 +121,15 @@
         </p>
     </div>
 
-    <div class="book-preview">
-        <img src="image_909d55.png" alt="Portada Libro Buenos Aires">
-    </div>
-
-    <div style="text-align: center; margin: 40px 0;">
+    <div class="cta-container">
+        <p style="font-weight: 700; margin-bottom: 25px; text-transform: uppercase; font-size: 1.2rem; letter-spacing: 1px;">
+            Explora la serie completa en formato flip-book
+        </p>
         <a href="https://heyzine.com/flip-book/6e8bbc7a6d.html" target="_blank" class="btn-heyzine">
             📖 Ver libro digital
         </a>
-        <p style="margin-top: 15px; font-size: 0.9rem; font-weight: 500; opacity: 0.7;">
-            (Se abre en una pestaña interactiva de Heyzine)
+        <p style="margin-top: 20px; font-size: 0.9rem; font-weight: 500; opacity: 0.6; text-transform: uppercase;">
+            Experiencia interactiva vía Heyzine
         </p>
     </div>
 
@@ -145,7 +137,7 @@
         <div class="tag">Fotografía Digital</div>
         <div class="tag">Adobe Photoshop</div>
         <div class="tag">Diseño Editorial</div>
-        <div class="tag">Heyzine</div>
+        <div class="tag">Heyzine Flip-book</div>
     </div>
 </article>
 
